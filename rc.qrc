@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/orange-header.png</file>
+        <file>img/toolButton.png</file>
+        <file>img/play16x16.png</file>
+        <file>img/drop-down.png</file>
+        <file>img/box.png</file>
+        <file>img/search.png</file>
+        <file>img/update.png</file>
+    </qresource>
+</RCC>
