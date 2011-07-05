@@ -7,5 +7,6 @@
         <file>img/box.png</file>
         <file>img/search.png</file>
         <file>img/update.png</file>
+        <file>img/download.png</file>
     </qresource>
 </RCC>

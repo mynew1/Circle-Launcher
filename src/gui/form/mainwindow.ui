@@ -173,24 +173,23 @@ QPushButton:hover{
      <property name="styleSheet">
       <string notr="true">QComboBox
 {
-border:none;
-padding:1px;
-text-align: right;
-
+	background-color: transparent;
+	border:none;
+	padding:1px;
+	text-align: right;
 }
 
 QComboBox::drop-down
 {
-border-width:1px;
+	border-width:1px;
 }
 
 QComboBox::down-arrow
 {
-	
 	image: url(:/img/drop-down.png);
 }
-QComboBox:hover{
-background-color: transparent;
+QComboBox:hover {
+	background-color: transparent;
 	background-color: rgb(76, 76, 76);
 }
 </string>

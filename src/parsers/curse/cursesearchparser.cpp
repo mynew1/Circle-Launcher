@@ -48,6 +48,9 @@ QUrl CurseSearchParser::GenerateUrl(QString indexTerm)
 
 void CurseSearchParser::setIndexTerm(QString indexTerm)
 {
+    if (!isParsingReady())
+        return;
+
     Init();
     _isParsingReady = false;
     parser->Abort();

@@ -44,7 +44,7 @@ public:
 
     void setAddonUrl(QUrl url);
 
-    AddonDownloadInfo* getDonloadInfo(){ return downloadInfo; }
+    AddonDownloadInfo* getDownloadInfo(){ return downloadInfo; }
     int getCountDownloadInfo(){ return downloadsCount; }
 
 signals:
