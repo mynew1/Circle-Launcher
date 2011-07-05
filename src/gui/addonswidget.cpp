@@ -108,14 +108,7 @@ void AddonsWidget::UpdateAddonDLoadInfo()
 
     dInfoFilter.setDownloadInfo(dInfo,dInfoCount);
     dInfoFilter.clearAllFilters();
-
     ui->versionCombo->addItems(dInfoFilter.getVersions());
-    dInfoFilter.setVersionFilter(ui->versionCombo->currentText());
-    ui->filenameCombo->addItems(dInfoFilter.getFileNames());
-    dInfoFilter.setFileNameFilter(ui->filenameCombo->currentText());
-
-    ui->downloadsLabel->setText(QString::number(dInfoFilter.getDownloadsCount()));
-
     ui->downloadFrame->show();
 }
 
