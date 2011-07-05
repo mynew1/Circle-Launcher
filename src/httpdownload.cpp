@@ -4,7 +4,6 @@ HttpDownload::HttpDownload(QObject *parent) : QObject(parent)
 {
     processDone = false;
     qnam = new QNetworkAccessManager(this);
-//    reply = new QNetworkReply(qnam);
 }
 
 void HttpDownload::startRequest(QUrl _url)
@@ -29,17 +28,12 @@ void HttpDownload::downloadFile(QUrl _url)
 
 HttpDownload::~HttpDownload()
 {
-    qDebug() << "~HttpDownload()";
 //    delete reply->manager();
 }
 
 void HttpDownload::cancelDownload()
 {
     httpRequestAborted = true;
-//    qDebug() <<"lokl";
-
-//        reply->close();
-//    reply->
 }
 
 void HttpDownload::httpFinished()
@@ -62,7 +56,6 @@ void HttpDownload::updateDataReadProgress(qint64 bytesRead, qint64 totalBytes)
     if (httpRequestAborted)
         return;
     qDebug() << QString(" Download: %1/%2").arg(bytesRead).arg(totalBytes);
-//    qDebug() <<"Download - " << (double)bytesRead / (totalBytes / 100) << "%";
 }
 
 QByteArray HttpDownload::getDownloadData()

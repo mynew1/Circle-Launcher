@@ -9,14 +9,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QStringList ls;
     ls << "logon" << "logon2" << "logon3";
+
+    QString style = "QLineEdit:hover {"
+                        "background-color: transparent;"
+                    "}";
+
     ui->realmCombo->addItems(ls);
     ui->realmCombo->setEditable(true);
-    QString style = "QLineEdit:hover {"
-            "background-color: transparent;"
-            "}";
     ui->realmCombo->lineEdit()->setStyleSheet(style);
     ui->realmCombo->lineEdit()->setReadOnly(true);
     ui->realmCombo->lineEdit()->setAlignment(Qt::AlignRight);
+
     for(int i = 0; i < ui->realmCombo->count(); i++)
         ui->realmCombo->setItemData(i, Qt::AlignRight, Qt::TextAlignmentRole);
 

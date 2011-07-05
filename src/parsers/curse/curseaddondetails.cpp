@@ -28,6 +28,7 @@ void CurseAddonDetails::setAddonUrl(QUrl url)
 {
     if (isParsingInProgress)
         return;
+
     Init();
     addonUrl = url;
     isParsingInProgress = true;
@@ -68,10 +69,10 @@ void CurseAddonDetails::CollectPageData(Parser *page)
 
     if (cursors[CURSOR_FILE_NAME] >= downloadsCount)
     {
-        isParsingInProgress = false;
         //debug
-        for (int i = 0; i < downloadsCount; ++i)
-            qDebug() << downloadInfo[i].gameVersion;
+//        for (int i = 0; i < downloadsCount; ++i)
+//            qDebug() << downloadInfo[i].gameVersion;
+        isParsingInProgress = false;
         emit ParsingDone();
     }
 }

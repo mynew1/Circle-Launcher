@@ -23,7 +23,7 @@ private:
     CurseSearchParser *curseSearch;
     AddonSearchInfo *addonsSrchInfo;
 
-    int currenSrchInfo;
+    int currentSrchInfo;
 
 public slots:
     void UpdateAddonSrchInfo();
