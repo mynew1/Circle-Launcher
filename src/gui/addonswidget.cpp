@@ -48,6 +48,7 @@ void AddonsWidget::UpdateAddonSrchInfo()
     ui->resultCountLabel->setText(QString::number(addonsCount));
     ui->tableWidget->clearContents();
     ui->downloadFrame->hide();
+    currentSrchInfo = -1;
 
     if (addonsCount <= 0)
     {
@@ -88,8 +89,13 @@ void AddonsWidget::on_tableWidget_cellClicked(int row, int column)
 
 void AddonsWidget::on_updateButton_clicked()
 {
-    if (currentSrchInfo != -1)
-        addonDetParser->setAddonUrl(addonsSrchInfo[currentSrchInfo].page);
+    if (currentSrchInfo == -1)
+    {
+        QMessageBox::information(this,"Addon not select","You must select addon and then use update button.");
+        return;
+    }
+
+    addonDetParser->setAddonUrl(addonsSrchInfo[currentSrchInfo].page);
 }
 
 void AddonsWidget::UpdateAddonDLoadInfo()
