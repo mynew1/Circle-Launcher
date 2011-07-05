@@ -13,6 +13,7 @@ struct AddonSearchInfo
 
 
 //TODO: create class for pages
+//      create parent class - CurseParseMng
 class CurseSearchParser : public QObject
 {
     Q_OBJECT

@@ -11,6 +11,7 @@ AddonsWidget::AddonsWidget(QWidget *parent) :
 
     curseSearch = new CurseSearchParser();
     connect(curseSearch,SIGNAL(ParsingDone()),this,SLOT(UpdateAddonSrchInfo()));
+
     ui->tableWidget->setColumnCount(3);
     QStringList ls;
     ls << "name" << "hits" << "rating";
