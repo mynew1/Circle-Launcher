@@ -16,6 +16,7 @@ void CurseSearchParser::Init()
 
     addonsCount = 0;
     connect(parser,SIGNAL(DataCollected(Parser*)),this,SLOT(Parse()));
+
 }
 
 CurseSearchParser::CurseSearchParser()

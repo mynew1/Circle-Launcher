@@ -1,5 +1,6 @@
 #include "addonswidget.h"
 #include "ui_addonswidget.h"
+#include <QMessageBox>
 
 
 AddonsWidget::AddonsWidget(QWidget *parent) :
@@ -27,8 +28,10 @@ AddonsWidget::~AddonsWidget()
 
 void AddonsWidget::on_searchButton_clicked()
 {
-    if (ui->searchEdit->text().count() > 1 && curseSearch->isParsingReady())
+    if (ui->searchEdit->text().count() > 2 && curseSearch->isParsingReady())
         curseSearch->setIndexTerm(ui->searchEdit->text());
+    else
+        QMessageBox::information(this,"Small index term","Need at least 3 characters.");
 }
 
 void AddonsWidget::UpdateAddonSrchInfo()
@@ -53,7 +56,9 @@ void AddonsWidget::UpdateAddonSrchInfo()
             rating->setTextAlignment(Qt::AlignCenter);
             ui->tableWidget->setItem(row, 2, rating);
         }
-    }
+    } else
+        QMessageBox::information(this,"Not found","Sorry, we were unable to find any \n"
+                                 "results using your search terms.");
 }
 
 void AddonsWidget::on_tableWidget_cellClicked(int row, int column)
