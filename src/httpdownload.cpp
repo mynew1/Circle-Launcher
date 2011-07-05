@@ -3,11 +3,13 @@
 HttpDownload::HttpDownload(QObject *parent) : QObject(parent)
 {
     processDone = false;
+    qnam = new QNetworkAccessManager(this);
+//    reply = new QNetworkReply(qnam);
 }
 
 void HttpDownload::startRequest(QUrl _url)
 {
-    reply = qnam.get(QNetworkRequest(_url));
+    reply = qnam->get(QNetworkRequest(_url));
     qDebug() << QString("Downloading '%1' started.").arg(url.toString());
 }
 
@@ -25,6 +27,12 @@ void HttpDownload::downloadFile(QUrl _url)
             this, SLOT(updateDataReadProgress(qint64,qint64)));
 }
 
+HttpDownload::~HttpDownload()
+{
+    qDebug() << "~HttpDownload()";
+//    delete reply->manager();
+}
+
 void HttpDownload::cancelDownload()
 {
     httpRequestAborted = true;
@@ -37,14 +45,11 @@ void HttpDownload::cancelDownload()
 void HttpDownload::httpFinished()
 {
     processDone = true;
-    if (httpRequestAborted) {
-        reply->deleteLater();
-        return;
-    } else
+    if (!httpRequestAborted)
         emit downloadFinished();
     reply->deleteLater();
+    qnam->deleteLater();
     reply = 0;
-
 }
 
 void HttpDownload::httpReadyRead()

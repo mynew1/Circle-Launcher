@@ -33,6 +33,11 @@ CurseSearchParser::CurseSearchParser(QUrl url)
     setUrl(url);
 }
 
+CurseSearchParser::~CurseSearchParser()
+{
+    delete addonInfo;
+    delete parser;
+}
 
 QUrl CurseSearchParser::GenerateUrl(QString indexTerm)
 {

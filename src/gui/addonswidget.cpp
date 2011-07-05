@@ -17,6 +17,7 @@ AddonsWidget::AddonsWidget(QWidget *parent) :
     ui->tableWidget->verticalHeader()->hide();
     ui->tableWidget->setColumnWidth(0,183);
     ui->tableWidget->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
+    currenSrchInfo = 0;
 }
 
 AddonsWidget::~AddonsWidget()
@@ -61,4 +62,10 @@ void AddonsWidget::on_tableWidget_cellClicked(int row, int column)
     ui->categoryLabel->setText(addonsSrchInfo[row].category.join(", "));
     ui->hitsLabel->setText(QString::number(addonsSrchInfo[row].hits));
     ui->ratingLabel->setText(QString::number(addonsSrchInfo[row].rating));
+    currenSrchInfo = row;
+}
+
+void AddonsWidget::on_updateButton_clicked()
+{
+
 }

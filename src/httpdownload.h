@@ -1,7 +1,12 @@
 #ifndef HttpDownload_H
 #define HttpDownload_H
 
-#include <QtNetwork>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkRequest>
+#include <QtNetwork/QNetworkReply>
+#include <QDebug>
+#include <QFileInfo>
+#include <QStringList>
 #include <QUrl>
 
 QT_BEGIN_NAMESPACE
@@ -15,6 +20,7 @@ class HttpDownload : public QObject
 
 public:
     HttpDownload(QObject *parent = 0);
+    ~HttpDownload();
     void downloadFile(QUrl _url);
 
 
@@ -37,7 +43,7 @@ signals:
 
 private:
     QUrl url;
-    QNetworkAccessManager qnam;
+    QNetworkAccessManager *qnam;
     QNetworkReply *reply;
     int httpGetId;
     bool httpRequestAborted;

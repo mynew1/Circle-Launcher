@@ -27,6 +27,7 @@ protected:
 public:
     Parser();
     Parser(QUrl url);
+    ~Parser();
 
     QUrl GetParseUrl() { return parseUrl; }
     void SetParseUrl(QUrl _url);
@@ -38,6 +39,8 @@ public:
     QString GetSegment() { return currentSegment; };
 
     static QString SrchSegInString(QString data, QString begin, QString end = "");
+
+    void DeleteStrFromData(QString str);
 
 signals:
     void DataCollected(Parser *p);

@@ -16,7 +16,8 @@ SOURCES += main.cpp\
     src/gui/mainwindow.cpp \
     src/gui/addonswidget.cpp \
     src/parsers/parser.cpp \
-    src/parsers/curse/cursesearchparser.cpp
+    src/parsers/curse/cursesearchparser.cpp \
+    src/parsers/curse/curseaddondetails.cpp
 
 
 RESOURCES += \
@@ -27,7 +28,8 @@ HEADERS += \
     src/gui/mainwindow.h \
     src/gui/addonswidget.h \
     src/parsers/parser.h \
-    src/parsers/curse/cursesearchparser.h
+    src/parsers/curse/cursesearchparser.h \
+    src/parsers/curse/curseaddondetails.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \

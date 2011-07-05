@@ -40,6 +40,7 @@ public:
     CurseSearchParser();
     CurseSearchParser(QString indexTerm);
     CurseSearchParser(QUrl url);
+    ~CurseSearchParser();
 
     void setIndexTerm(QString indexTerm);
     void setUrl(QUrl url);

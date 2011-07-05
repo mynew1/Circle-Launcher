@@ -15,6 +15,11 @@ Parser::Parser(QUrl url)
     download->downloadFile(parseUrl);
 }
 
+Parser::~Parser()
+{
+    delete download;
+}
+
 void Parser::SetParseUrl(QUrl url)
 {
     dataReady = false;
@@ -25,7 +30,7 @@ void Parser::SetParseUrl(QUrl url)
 void Parser::Abort()
 {
     download->cancelDownload();
-    Parser();
+     Parser();
 }
 
 void Parser::EmitDataCollected()
@@ -126,4 +131,12 @@ QString Parser::CutString(QString str, qint32 begIndex, qint32 endIndex)
     for (int i = begIndex; i < endIndex; ++i)
         res += str[i];
     return res;
+}
+
+void Parser::DeleteStrFromData(QString str)
+{
+    QString data(parsingData);
+    int index = data.indexOf(str);
+    if (index > 0)
+        parsingData.remove(index,str.count());
 }
