@@ -5,7 +5,7 @@ Parser::Parser()
     download  = new HttpDownload();
     dataReady = false;
     isSegmentExists = false;
-    connect(download, SIGNAL(downloadFinished()), this, SLOT(EmitDataCollected()));
+    connect(download, SIGNAL(downloadFinished(QUrl)), this, SLOT(EmitDataCollected()));
 }
 
 Parser::Parser(QUrl url)

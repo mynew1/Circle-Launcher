@@ -15,6 +15,7 @@ void HttpDownload::startRequest(QUrl _url)
 void HttpDownload::downloadFile(QUrl _url)
 {
     url = _url;
+    qnam = new QNetworkAccessManager(this);
     httpRequestAborted = false;
     processDone = false;
     startRequest(_url);
@@ -24,6 +25,7 @@ void HttpDownload::downloadFile(QUrl _url)
             this, SLOT(httpReadyRead()));
     connect(reply, SIGNAL(downloadProgress(qint64,qint64)),
             this, SLOT(updateDataReadProgress(qint64,qint64)));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(ErrorMassage(QNetworkReply::NetworkError)));
 }
 
 HttpDownload::~HttpDownload()
@@ -39,16 +41,16 @@ void HttpDownload::cancelDownload()
 void HttpDownload::httpFinished()
 {
     processDone = true;
+//    reply->deleteLater();
+//    qnam->deleteLater();
+//    reply = 0;
     if (!httpRequestAborted)
-        emit downloadFinished();
-    reply->deleteLater();
-    qnam->deleteLater();
-    reply = 0;
+        emit downloadFinished(url);
 }
 
 void HttpDownload::httpReadyRead()
 {
-    emit downloadStarted();
+    emit downloadStarted(url);
 }
 
 void HttpDownload::updateDataReadProgress(qint64 bytesRead, qint64 totalBytes)
@@ -87,4 +89,10 @@ bool HttpDownload::SaveToFile()
     file->write(reply->readAll());
     file->close();
     return true;
+}
+
+void HttpDownload::ErrorMassage(QNetworkReply::NetworkError er)
+{
+    qDebug() << QString("Error: %1. In download file -").arg(er) << url.toString() ;
+
 }

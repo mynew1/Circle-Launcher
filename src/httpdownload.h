@@ -36,10 +36,11 @@ private slots:
 
 public slots:
     void cancelDownload();
+    void ErrorMassage(QNetworkReply::NetworkError);
 
 signals:
-    void downloadStarted();
-    void downloadFinished();
+    void downloadStarted(QUrl);
+    void downloadFinished(QUrl);
 
 private:
     QUrl url;
