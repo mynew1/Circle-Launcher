@@ -11,6 +11,7 @@ private:
     Parser parser;
     QUrl addonUrl;
     QUrl downloadUrl;
+    bool isParsingReady;
 
 public:
     explicit CurseParseDownloadUrl(QObject *parent = 0);

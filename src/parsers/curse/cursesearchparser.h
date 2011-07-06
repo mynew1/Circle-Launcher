@@ -22,7 +22,7 @@ private:
     void Init();
     Parser *parser;
     QUrl parseUrl;
-
+Parser *pages;
     AddonSearchInfo *addonInfo;
     int addonsCount;
     bool _isParsingReady;

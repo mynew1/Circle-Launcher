@@ -2,8 +2,6 @@
 
 void CurseSearchParser::Init()
 {
-    parser = new Parser();
-
     addonsNameCursor     = 0;
     addonsPageCursor     = 0;
     addonsCategoryCursor = 0;
@@ -15,12 +13,13 @@ void CurseSearchParser::Init()
     _isParsingReady = true;
 
     addonsCount = 0;
-    connect(parser,SIGNAL(DataCollected(Parser*)),this,SLOT(Parse()));
-
 }
 
 CurseSearchParser::CurseSearchParser()
 {
+    parser = new Parser();
+    connect(parser,SIGNAL(DataCollected(Parser*)),this,SLOT(Parse()));
+
     Init();
 }
 
@@ -37,6 +36,7 @@ CurseSearchParser::CurseSearchParser(QUrl url)
 CurseSearchParser::~CurseSearchParser()
 {
     delete addonInfo;
+    delete pages;
     delete parser;
 }
 
@@ -83,7 +83,7 @@ void CurseSearchParser::Parse()
     CollectData(parser);
     if (pageCount  > 1)
     {
-        Parser *pages = new Parser[pageCount + 1];
+        pages = new Parser[pageCount + 1];
         for (int i = 2; i < pageCount + 1; ++i)
         {
             connect(&pages[i],SIGNAL(DataCollected(Parser*)),this,SLOT(CollectData(Parser*)));

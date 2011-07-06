@@ -13,6 +13,7 @@ AddonsWidget::AddonsWidget(QWidget *parent) :
     addonDetParser = new CurseAddonDetails();
     connect(curseSearch,SIGNAL(ParsingDone()),this,SLOT(UpdateAddonSrchInfo()));
     connect(addonDetParser,SIGNAL(ParsingDone()), this, SLOT(UpdateAddonDLoadInfo()));
+    connect(&dLoadUrlParser, SIGNAL(ParsingDone()), this, SLOT(addAddonToQueue()));
 
     ui->tableWidget->setColumnCount(3);
     QStringList ls;
@@ -130,4 +131,14 @@ void AddonsWidget::on_filenameCombo_currentIndexChanged(QString str)
     dInfoFilter.setFileNameFilter(str);
 
     ui->downloadsLabel->setText(QString::number(dInfoFilter.getDownloadsCount()));
+}
+
+void AddonsWidget::on_playButton_clicked()
+{
+    dLoadUrlParser.setAddonUrl(dInfoFilter.getDownloadPage());
+}
+
+void AddonsWidget::addAddonToQueue()
+{
+    dLoadQueue.addToQueue(dLoadUrlParser.getDownloadUrl());
 }

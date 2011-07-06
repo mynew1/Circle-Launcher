@@ -5,7 +5,9 @@
 #include <QTableWidgetItem>
 #include "src/parsers/curse/cursesearchparser.h"
 #include "src/parsers/curse/curseaddondetails.h"
+#include "src/parsers/curse/curseparsedownloadurl.h"
 #include "src/gui/downloadinfofilter.h"
+#include "src/addon/downloadqueue.h"
 
 namespace Ui {
     class AddonsWidget;
@@ -20,11 +22,13 @@ public:
     ~AddonsWidget();
 
 private:
-    Ui::AddonsWidget *ui;
-    CurseSearchParser *curseSearch;
-    AddonSearchInfo *addonsSrchInfo;
-    CurseAddonDetails *addonDetParser;
-    DownloadInfoFilter dInfoFilter;
+    Ui::AddonsWidget      *ui;
+    CurseSearchParser     *curseSearch;
+    AddonSearchInfo       *addonsSrchInfo;
+    CurseAddonDetails     *addonDetParser;
+    DownloadInfoFilter     dInfoFilter;
+    CurseParseDownloadUrl  dLoadUrlParser;
+    DownloadQueue          dLoadQueue;
 
     int currentSrchInfo;
 
@@ -38,6 +42,8 @@ private slots:
     void on_updateButton_clicked();
     void on_versionCombo_currentIndexChanged(QString );
     void on_filenameCombo_currentIndexChanged(QString );
+    void on_playButton_clicked();
+    void addAddonToQueue();
 };
 
 #endif // ADDONSWIDGET_H

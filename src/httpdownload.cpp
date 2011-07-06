@@ -15,7 +15,6 @@ void HttpDownload::startRequest(QUrl _url)
 void HttpDownload::downloadFile(QUrl _url)
 {
     url = _url;
-    qnam = new QNetworkAccessManager(this);
     httpRequestAborted = false;
     processDone = false;
     startRequest(_url);

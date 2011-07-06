@@ -30,7 +30,7 @@ void Parser::SetParseUrl(QUrl url)
 void Parser::Abort()
 {
     download->cancelDownload();
-     Parser();
+    Parser();
 }
 
 void Parser::EmitDataCollected()
