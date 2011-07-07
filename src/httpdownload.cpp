@@ -44,6 +44,7 @@ void HttpDownload::httpFinished()
 //    reply->deleteLater();
 //    qnam->deleteLater();
 //    reply = 0;
+    emit readProgress(100);
     if (!httpRequestAborted)
         emit downloadFinished(url);
 }
