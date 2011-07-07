@@ -25,6 +25,7 @@ AddonsWidget::AddonsWidget(QWidget *parent) :
     ui->tableWidget->setColumnWidth(0,183);
     ui->tableWidget->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
     ui->downloadFrame->hide();
+    ui->progressBar->hide();
     currentSrchInfo = -1;
 }
 
@@ -152,8 +153,15 @@ void AddonsWidget::updateQueueCount(int count)
 
 void AddonsWidget::updateProgress(QUrl url, int prog)
 {
+    ui->progressBar->show();
+    ui->currDLoadLabel->show();
     ui->progressBar->setValue(prog);
     ui->currDLoadLabel->setText(QFileInfo(url.path()).fileName());
+    if (prog == 100)
+    {
+        ui->progressBar->hide();
+        ui->currDLoadLabel->hide();
+    }
 }
 
 
