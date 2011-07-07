@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT       += network
+#QT       += zlib
 
 TARGET = launcher
 TEMPLATE = app
@@ -20,7 +21,8 @@ SOURCES += main.cpp\
     src/parsers/curse/curseaddondetails.cpp \
     src/parsers/curse/curseparsedownloadurl.cpp \
     src/gui/downloadinfofilter.cpp \
-    src/addon/downloadqueue.cpp
+    src/addon/downloadqueue.cpp \
+    src/addon/zip/qzip.cpp
 
 
 RESOURCES += \
@@ -35,8 +37,12 @@ HEADERS += \
     src/parsers/curse/curseaddondetails.h \
     src/parsers/curse/curseparsedownloadurl.h \
     src/gui/downloadinfofilter.h \
-    src/addon/downloadqueue.h
+    src/addon/downloadqueue.h \
+    src/addon/zip/qzipwriter_p.h \
+    src/addon/zip/qzipreader_p.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \
     src/gui/form/addonswidget.ui
+
+INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib
