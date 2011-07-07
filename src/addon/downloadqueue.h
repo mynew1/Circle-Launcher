@@ -41,13 +41,14 @@ public:
 signals:
     void dLoadStarted(QUrl);
     void dLoadFinished(QUrl);
+    void countChanged(int);
+    void progress(QUrl, int);
 
 private slots:
     void emitDLoadStarted(QUrl);
     void emitDLoadFinished(QUrl);
     void startNewDLoad();
-//public slots:
-
+    void emitProgress(int);
 };
 
 #endif // DOWNLOADQUEUE_H

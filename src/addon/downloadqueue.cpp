@@ -20,6 +20,7 @@ void DownloadQueue::Init()
     currNode   = NULL;
     connect(&dLoad, SIGNAL(downloadStarted(QUrl)), this, SLOT(emitDLoadStarted(QUrl)));
     connect(&dLoad, SIGNAL(downloadFinished(QUrl)), this, SLOT(emitDLoadFinished(QUrl)));
+    connect(&dLoad, SIGNAL(readProgress(int)), this, SLOT(emitProgress(int)));
 }
 
 void DownloadQueue::setDownloadPath(QString _path)
@@ -55,6 +56,7 @@ bool DownloadQueue::addToQueue(QUrl url)
         head->next = NULL;
         tail = head;
         nodeCounts++;
+        emit countChanged(nodeCounts);
         startNewDLoad();
         return true;
     }
@@ -68,6 +70,7 @@ bool DownloadQueue::addToQueue(QUrl url)
     tail->next = tmp;
     tail = tmp;
     nodeCounts++;
+    emit countChanged(nodeCounts);
     return true;
 }
 
@@ -81,6 +84,7 @@ bool DownloadQueue::removeFromQueue(QUrl url)
         delete head;
         head = tmp;
         --nodeCounts;
+        emit countChanged(nodeCounts);
         return true;
     }
 
@@ -93,6 +97,7 @@ bool DownloadQueue::removeFromQueue(QUrl url)
             delete iter->next;
             iter->next = tmp;
             --nodeCounts;
+            emit countChanged(nodeCounts);
             return true;
         }
         iter = iter->next;
@@ -113,3 +118,7 @@ bool DownloadQueue::alreadyInQueue(QUrl _url)
     return haveDuplicates;
 }
 
+void DownloadQueue::emitProgress(int prog)
+{
+    emit progress(head->downloadUrl, prog);
+}

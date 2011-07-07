@@ -44,6 +44,8 @@ private slots:
     void on_filenameCombo_currentIndexChanged(QString );
     void on_playButton_clicked();
     void addAddonToQueue();
+    void updateQueueCount(int);
+    void updateProgress(QUrl,int);
 };
 
 #endif // ADDONSWIDGET_H

@@ -14,6 +14,8 @@ AddonsWidget::AddonsWidget(QWidget *parent) :
     connect(curseSearch,SIGNAL(ParsingDone()),this,SLOT(UpdateAddonSrchInfo()));
     connect(addonDetParser,SIGNAL(ParsingDone()), this, SLOT(UpdateAddonDLoadInfo()));
     connect(&dLoadUrlParser, SIGNAL(ParsingDone()), this, SLOT(addAddonToQueue()));
+    connect(&dLoadQueue, SIGNAL(countChanged(int)), this, SLOT(updateQueueCount(int)));
+    connect(&dLoadQueue, SIGNAL(progress(QUrl,int)), this, SLOT(updateProgress(QUrl,int)));
 
     ui->tableWidget->setColumnCount(3);
     QStringList ls;
@@ -142,3 +144,17 @@ void AddonsWidget::addAddonToQueue()
 {
     dLoadQueue.addToQueue(dLoadUrlParser.getDownloadUrl());
 }
+
+void AddonsWidget::updateQueueCount(int count)
+{
+    ui->inQueueLabel->setText(QString::number(count));
+}
+
+void AddonsWidget::updateProgress(QUrl url, int prog)
+{
+    ui->progressBar->setValue(prog);
+    ui->currDLoadLabel->setText(QFileInfo(url.path()).fileName());
+}
+
+
+

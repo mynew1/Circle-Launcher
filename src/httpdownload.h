@@ -41,6 +41,7 @@ public slots:
 signals:
     void downloadStarted(QUrl);
     void downloadFinished(QUrl);
+    void readProgress(int);
 
 private:
     QUrl url;
@@ -49,6 +50,7 @@ private:
     int httpGetId;
     bool httpRequestAborted;
     bool processDone;
+    int currProg;
 };
 
 #endif
