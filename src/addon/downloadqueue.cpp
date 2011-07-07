@@ -35,7 +35,7 @@ void DownloadQueue::emitDLoadStarted(QUrl url)
 
 void DownloadQueue::emitDLoadFinished(QUrl url)
 {
-    dLoad.SaveToFile();
+    dLoad.SaveToFile(dLoadPath);
     emit dLoadFinished(url);
     removeFromQueue(url);
     startNewDLoad();

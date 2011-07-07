@@ -26,6 +26,8 @@ AddonsWidget::AddonsWidget(QWidget *parent) :
     ui->tableWidget->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
     ui->downloadFrame->hide();
     ui->progressBar->hide();
+    //will be fixed when implement settings
+    dLoadQueue.setDownloadPath("/home/walkline/download/");
     currentSrchInfo = -1;
 }
 

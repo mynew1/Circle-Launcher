@@ -78,7 +78,7 @@ QByteArray HttpDownload::getDownloadData()
     return reply->readAll();
 }
 
-bool HttpDownload::SaveToFile()
+bool HttpDownload::SaveToFile(QString path)
 {
     if(!processDone)
         return false;
@@ -86,11 +86,11 @@ bool HttpDownload::SaveToFile()
     QFile *file;
     QFileInfo fileInfo(url.path());
     QString fileName = fileInfo.fileName();
-    if (QFile::exists(fileName)) {
+    if (QFile::exists(path+fileName)) {
         qWarning() << "File with name \"" << fileName <<"\" already exists. Rewrite.";
     }
 
-    file = new QFile(fileName);
+    file = new QFile(path+fileName);
     if (!file->open(QIODevice::WriteOnly)) {
         qWarning() << "Cant open file.";
         delete file;

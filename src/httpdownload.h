@@ -26,7 +26,7 @@ public:
 
 public slots:
     QByteArray getDownloadData();
-    bool SaveToFile();
+    bool SaveToFile(QString path);
 
 private slots:
     void startRequest(QUrl _url);
