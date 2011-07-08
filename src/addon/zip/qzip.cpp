@@ -919,14 +919,49 @@ bool QZipReader::extractAll(const QString &destinationDir) const
     QDir baseDir(destinationDir);
 
     // create directories first
+    int dirCounts = 0;
     QList<FileInfo> allFiles = fileInfoList();
     foreach (FileInfo fi, allFiles) {
         const QString absPath = destinationDir + QDir::separator() + fi.filePath;
         if (fi.isDir) {
+            dirCounts++;
+            qDebug() << fi.permissions;
             if (!baseDir.mkpath(fi.filePath))
                 return false;
             if (!QFile::setPermissions(absPath, fi.permissions))
                 return false;
+        }
+    }
+
+    //dirty hack. fix extraction for archiv with one folder
+    if (!dirCounts)
+    {
+        QFile::Permissions perm;
+        perm |= QFile::ReadOther;
+        perm |= QFile::ExeGroup;
+        perm |= QFile::ReadGroup;
+        perm |= QFile::ExeUser;
+        perm |= QFile::WriteUser;
+        perm |= QFile::ReadUser;
+        perm |= QFile::ExeOwner;
+        perm |= QFile::WriteOwner;
+        perm |= QFile::ReadOwner;
+
+        foreach (FileInfo fi, allFiles) {
+            QString file = fi.filePath;
+            int index = 0;
+            while (file.indexOf("/", index) != -1)
+            {
+                QString path = file.mid(0, file.indexOf("/", index + 1)/* - index*/);
+                index = file.indexOf("/", index + 1) + 1;
+                if (!QFile::exists(destinationDir + QDir::separator() + path))
+                {
+                    if (!baseDir.mkpath(path))
+                        return false;
+                    if (!QFile::setPermissions(destinationDir + QDir::separator() + path, perm))
+                        return false;
+                }
+            }
         }
     }
 
