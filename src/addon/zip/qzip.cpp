@@ -925,7 +925,6 @@ bool QZipReader::extractAll(const QString &destinationDir) const
         const QString absPath = destinationDir + QDir::separator() + fi.filePath;
         if (fi.isDir) {
             dirCounts++;
-            qDebug() << fi.permissions;
             if (!baseDir.mkpath(fi.filePath))
                 return false;
             if (!QFile::setPermissions(absPath, fi.permissions))
