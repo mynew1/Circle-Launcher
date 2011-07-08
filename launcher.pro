@@ -22,7 +22,9 @@ SOURCES += main.cpp\
     src/gui/downloadinfofilter.cpp \
     src/addon/downloadqueue.cpp \
     src/addon/zip/qzip.cpp \
-    src/addon/addoninstaller.cpp
+    src/addon/addoninstaller.cpp \
+    src/gui/addonintallwidget.cpp \
+    src/addon/zipsearch.cpp
 
 
 RESOURCES += \
@@ -42,7 +44,9 @@ HEADERS += \
     src/addon/zip/qzipreader_p.h \
     src/addon/addoninstaller.h \
     src/addon/zip/zlib.h \
-    src/addon/zip/zconf.h
+    src/addon/zip/zconf.h \
+    src/gui/addonintallwidget.h \
+    src/addon/zipsearch.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \

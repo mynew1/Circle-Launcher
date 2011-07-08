@@ -8,9 +8,13 @@ AddonInstaller::AddonInstaller(QObject *parent) :
 void AddonInstaller::installAddon(QString addonPath, QString extractDir)
 {
     QZipReader zip_reader(addonPath);
-    if (zip_reader.exists())
-        zip_reader.extractAll(extractDir);
+    if (!zip_reader.exists())
+    {
+        qWarning() << "cant find addon path";
+        return;
+    }
 
+    zip_reader.extractAll(extractDir);
 }
 
 bool AddonInstaller::isAlreadyInstalled(QString addonPath, QString checkDir)

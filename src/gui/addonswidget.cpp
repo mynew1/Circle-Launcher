@@ -2,6 +2,7 @@
 #include "ui_addonswidget.h"
 #include <QMessageBox>
 
+QString downloadPath = "/home/walkline/download/";
 
 AddonsWidget::AddonsWidget(QWidget *parent) :
     QWidget(parent),
@@ -11,8 +12,8 @@ AddonsWidget::AddonsWidget(QWidget *parent) :
 
     curseSearch  = new CurseSearchParser();
     addonDetParser = new CurseAddonDetails();
-    connect(curseSearch,SIGNAL(ParsingDone()),this,SLOT(UpdateAddonSrchInfo()));
-    connect(addonDetParser,SIGNAL(ParsingDone()), this, SLOT(UpdateAddonDLoadInfo()));
+    connect(curseSearch, SIGNAL(ParsingDone()), this, SLOT(UpdateAddonSrchInfo()));
+    connect(addonDetParser, SIGNAL(ParsingDone()), this, SLOT(UpdateAddonDLoadInfo()));
     connect(&dLoadUrlParser, SIGNAL(ParsingDone()), this, SLOT(addAddonToQueue()));
     connect(&dLoadQueue, SIGNAL(countChanged(int)), this, SLOT(updateQueueCount(int)));
     connect(&dLoadQueue, SIGNAL(progress(QUrl,int)), this, SLOT(updateProgress(QUrl,int)));
@@ -27,7 +28,10 @@ AddonsWidget::AddonsWidget(QWidget *parent) :
     ui->downloadFrame->hide();
     ui->progressBar->hide();
     //will be fixed when implement settings
-    dLoadQueue.setDownloadPath("/home/walkline/download/");
+    dLoadQueue.setDownloadPath(downloadPath);
+    installWidget.setDownloadPath(downloadPath);
+    installWidget.setAddonPath("/home/walkline/download/addons/");
+
     currentSrchInfo = -1;
 }
 
@@ -168,3 +172,8 @@ void AddonsWidget::updateProgress(QUrl url, int prog)
 
 
 
+
+void AddonsWidget::on_installButton_clicked()
+{
+    installWidget.show();
+}

@@ -200,6 +200,35 @@ font: 8pt ;</string>
      <string>0</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="installButton">
+    <property name="geometry">
+     <rect>
+      <x>176</x>
+      <y>10</y>
+      <width>61</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#installButton{
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 rgb(45, 45, 45), stop:0.637681 rgb(75, 75, 75));
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+	color: white;
+	font-weight: bold;
+}
+QPushButton#installButton:hover{
+	background-color: black;
+}
+QPushButton#installButton:pressed{
+	background-color: rgb(76,76,76);
+}</string>
+    </property>
+    <property name="text">
+     <string>Install</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">

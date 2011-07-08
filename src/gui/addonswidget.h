@@ -7,6 +7,7 @@
 #include "src/parsers/curse/curseaddondetails.h"
 #include "src/parsers/curse/curseparsedownloadurl.h"
 #include "src/gui/downloadinfofilter.h"
+#include "src/gui/addonintallwidget.h"
 #include "src/addon/downloadqueue.h"
 
 namespace Ui {
@@ -29,6 +30,7 @@ private:
     DownloadInfoFilter     dInfoFilter;
     CurseParseDownloadUrl  dLoadUrlParser;
     DownloadQueue          dLoadQueue;
+    AddonIntallWidget      installWidget;
 
     int currentSrchInfo;
 
@@ -46,6 +48,7 @@ private slots:
     void addAddonToQueue();
     void updateQueueCount(int);
     void updateProgress(QUrl,int);
+    void on_installButton_clicked();
 };
 
 #endif // ADDONSWIDGET_H
