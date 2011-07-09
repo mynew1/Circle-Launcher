@@ -24,8 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->realmCombo->setItemData(i, Qt::AlignRight, Qt::TextAlignmentRole);
 
     aw = new AddonsWidget(ui->mainWidget);
+    mw = new MainWidget(ui->mainWidget);
 
-    ActiveTab(ui->addonButton);
+    on_mainButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -66,11 +67,15 @@ void MainWindow::ActiveTab(QPushButton *button)
 void MainWindow::on_mainButton_clicked()
 {
     ActiveTab(ui->mainButton);
+    aw->hide();
+    mw->show();
 }
 
 void MainWindow::on_addonButton_clicked()
 {
     ActiveTab(ui->addonButton);
+    mw->hide();
+    aw->show();
 }
 
 void MainWindow::on_arenaButton_clicked()

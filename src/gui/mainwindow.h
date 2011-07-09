@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "addonswidget.h"
+#include "src/gui/mainwidget.h"
 #include <QPushButton>
 
 namespace Ui {
@@ -26,7 +27,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    AddonsWidget *aw;
+    AddonsWidget   *aw;
+    MainWidget     *mw;
 
     void UnActiveTabs();
     void ActiveTab(QPushButton *button);

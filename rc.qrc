@@ -8,5 +8,14 @@
         <file>img/search.png</file>
         <file>img/update.png</file>
         <file>img/download.png</file>
+        <file>img/mainbg.png</file>
+        <file>img/nextActive.png</file>
+        <file>img/nextUnActive.png</file>
+        <file>img/sinhr.png</file>
+        <file>img/lock.png</file>
+        <file>img/on.png</file>
+        <file>img/off.png</file>
+        <file>img/prevActive.png</file>
+        <file>img/nocharacters.png</file>
     </qresource>
 </RCC>

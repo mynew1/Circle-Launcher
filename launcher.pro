@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     src/addon/zip/qzip.cpp \
     src/addon/addoninstaller.cpp \
     src/gui/addonintallwidget.cpp \
-    src/addon/zipsearch.cpp
+    src/addon/zipsearch.cpp \
+    src/gui/mainwidget.cpp
 
 
 RESOURCES += \
@@ -46,10 +47,12 @@ HEADERS += \
     src/addon/zip/zlib.h \
     src/addon/zip/zconf.h \
     src/gui/addonintallwidget.h \
-    src/addon/zipsearch.h
+    src/addon/zipsearch.h \
+    src/gui/mainwidget.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \
-    src/gui/form/addonswidget.ui
+    src/gui/form/addonswidget.ui \
+    src/gui/mainwidget.ui
 
 INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib
