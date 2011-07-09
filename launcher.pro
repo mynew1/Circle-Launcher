@@ -53,6 +53,6 @@ HEADERS += \
 FORMS += \
     src/gui/form/mainwindow.ui \
     src/gui/form/addonswidget.ui \
-    src/gui/mainwidget.ui
+    src/gui/form/mainwidget.ui
 
 INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib

@@ -1,0 +1,4 @@
+## Interface: 30300
+## Title: Addon for Launcher
+## SavedVariables: CharactersData
+CharData.lua

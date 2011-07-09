@@ -351,8 +351,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QWidget" name="realmsWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>45</x>
-      <y>166</y>
+      <x>40</x>
+      <y>170</y>
       <width>320</width>
       <height>111</height>
      </rect>
@@ -367,8 +367,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="nextRealmsButton">
     <property name="geometry">
      <rect>
-      <x>375</x>
-      <y>190</y>
+      <x>370</x>
+      <y>194</y>
       <width>25</width>
       <height>51</height>
      </rect>
@@ -386,8 +386,8 @@ image: url(:/img/nextActive.png);
    <widget class="QPushButton" name="prevRealmsButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>190</y>
+      <x>5</x>
+      <y>194</y>
       <width>25</width>
       <height>51</height>
      </rect>
