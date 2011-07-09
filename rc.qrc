@@ -17,5 +17,15 @@
         <file>img/off.png</file>
         <file>img/prevActive.png</file>
         <file>img/nocharacters.png</file>
+        <file>img/class/hunter.png</file>
+        <file>img/class/deth-knight.png</file>
+        <file>img/class/druid.png</file>
+        <file>img/class/mage.png</file>
+        <file>img/class/paladin.png</file>
+        <file>img/class/priest.png</file>
+        <file>img/class/rogue.png</file>
+        <file>img/class/shaman.png</file>
+        <file>img/class/warlock.png</file>
+        <file>img/class/warrior.png</file>
     </qresource>
 </RCC>

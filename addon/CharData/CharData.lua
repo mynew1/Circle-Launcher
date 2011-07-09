@@ -12,6 +12,7 @@ function frame:OnEvent(event, arg1)
         CharactersData[GetRealmName().."@"..UnitName("player").."-race"]    = UnitRace("player");
         CharactersData[GetRealmName().."@"..UnitName("player").."-class"]   = UnitClass("player");
         CharactersData[GetRealmName().."@"..UnitName("player").."-lastIn"]  = date("%m/%d/%y %H:%M:%S");
+	CharactersData[GetRealmName().."@"..UnitName("player").."-sex"]     = UnitSex("player");
 
     end
 end
