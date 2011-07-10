@@ -78,6 +78,7 @@ QProgressBar::chunk:hover{
      <string notr="true">QWidget#mainRealmWidget{
 	background-color: rgba(0,0,0,80);
 	border: 1px solid rgba(0,0,0,80);
+	border-radius:5px;
 }</string>
     </property>
     <widget class="QProgressBar" name="onlineBar">
@@ -231,7 +232,7 @@ QWidget:hover{
 }</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="saveRealmButton_2">
+    <widget class="QPushButton" name="saveCharButton">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -251,7 +252,7 @@ QWidget:hover{
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="levelLabel">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -267,7 +268,7 @@ QWidget:hover{
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QWidget" name="statusWidget_2" native="true">
+    <widget class="QWidget" name="classWidget" native="true">
      <property name="geometry">
       <rect>
        <x>101</x>
@@ -299,8 +300,8 @@ QWidget{
      <rect>
       <x>0</x>
       <y>280</y>
-      <width>401</width>
-      <height>121</height>
+      <width>400</width>
+      <height>120</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -318,12 +319,12 @@ QWidget{
      <property name="styleSheet">
       <string notr="true">QPushButton#newsButton{
 	border: none;
-	border-top: 1px solid black;
+	border-top: 1px solid rgba(0,0,0,80);
 	background-color: rgba(0,0,0,0);
 	text-align:left;
 }
 QPushButton#newsButton:hover{
-	background-color: rgba(0,0,0,80);
+	background-color: rgba(0,0,0,50);
 }</string>
      </property>
      <property name="text">
@@ -342,12 +343,12 @@ QPushButton#newsButton:hover{
      <property name="styleSheet">
       <string notr="true">QPushButton#fixButton{
 	border: none;
-	border-top: 1px solid black;
+	border-top: 1px solid rgba(0,0,0,80);
 	background-color: rgba(0,0,0,0);
 	text-align:left;
 }
 QPushButton#fixButton:hover:active{
-	background-color: rgba(0,0,0,80);
+	background-color: rgba(0,0,0,50);
 }</string>
      </property>
      <property name="text">
@@ -366,13 +367,13 @@ QPushButton#fixButton:hover:active{
      <property name="styleSheet">
       <string notr="true">QPushButton#infoButton{
 	border: none;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
+	border-top: 1px solid rgba(0,0,0,80);
+	border-bottom: 1px solid rgba(0,0,0,80);
 	background-color: rgba(0,0,0,0);
 	text-align:left;
 }
 QPushButton#infoButton:hover{
-	background-color: rgba(0,0,0,80);
+	background-color: rgba(0,0,0,50);
 }</string>
      </property>
      <property name="text">
@@ -390,8 +391,10 @@ QPushButton#infoButton:hover{
      </property>
      <property name="styleSheet">
       <string notr="true">QTextBrowser#textBrowser{
-	background-color: rgba(0,0,0,80);
-	border: 1px solid black;
+	background-color: rgba(0,0,0,50);
+	border: 1px solid rgba(0,0,0,80);
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 	border-left: none;
 }</string>
      </property>
@@ -414,7 +417,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>170</y>
+      <y>165</y>
       <width>320</width>
       <height>111</height>
      </rect>
@@ -422,7 +425,7 @@ p, li { white-space: pre-wrap; }
     <property name="styleSheet">
      <string notr="true">QWidget#realmsWidget{
 	background-color: rgba(0,0,0,50);
-	border: 1px solid rgba(0,0,0,80);
+
 }</string>
     </property>
    </widget>
@@ -430,7 +433,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>370</x>
-      <y>194</y>
+      <y>192</y>
       <width>25</width>
       <height>51</height>
      </rect>
@@ -449,7 +452,7 @@ image: url(:/img/nextActive.png);
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>194</y>
+      <y>192</y>
       <width>25</width>
       <height>51</height>
      </rect>

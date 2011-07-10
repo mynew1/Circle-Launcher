@@ -90,7 +90,7 @@ int Parser::SegmentsCount()
         count++;
     } while (startIndex > 0 && endIndex > 0);
 
-    return count;
+    return count - 1;
 }
 
 bool Parser::NextSegment()

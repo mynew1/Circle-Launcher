@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     src/addon/addoninstaller.cpp \
     src/gui/addonintallwidget.cpp \
     src/addon/zipsearch.cpp \
-    src/gui/mainwidget.cpp
+    src/gui/mainwidget.cpp \
+    src/parsers/circle/circleparseonline.cpp
 
 
 RESOURCES += \
@@ -48,7 +49,8 @@ HEADERS += \
     src/addon/zip/zconf.h \
     src/gui/addonintallwidget.h \
     src/addon/zipsearch.h \
-    src/gui/mainwidget.h
+    src/gui/mainwidget.h \
+    src/parsers/circle/circleparseonline.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \
