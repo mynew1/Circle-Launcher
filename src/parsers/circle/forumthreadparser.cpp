@@ -9,6 +9,7 @@ ForumThreadParser::ForumThreadParser(QObject *parent) :
 
 void ForumThreadParser::setPage(QUrl url)
 {
+    threadPage = url;
     parser.SetParseUrl(url);
 }
 

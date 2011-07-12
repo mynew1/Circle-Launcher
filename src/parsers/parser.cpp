@@ -36,7 +36,6 @@ void Parser::Abort()
 void Parser::EmitDataCollected()
 {
     parsingData = download->getDownloadStrData();
-//    qDebug() << parsingData;
     if (!parsingData.isNull())
     {
         dataReady   = true;

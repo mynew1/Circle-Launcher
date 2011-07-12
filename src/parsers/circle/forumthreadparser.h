@@ -18,6 +18,7 @@ private:
     Parser parser;
     Post  *posts;
     int    postsCount;
+    QUrl   threadPage;
 public:
     explicit ForumThreadParser(QObject *parent = 0);
 
@@ -26,7 +27,7 @@ public:
     Post* getPosts()      { return posts;      }
     int   getPostsCount() { return postsCount; }
     Post  getFirstPost()  { return posts[0];   }
-
+    QUrl  getThreadPage() { return threadPage; }
 signals:
     void ParsingDone();
 

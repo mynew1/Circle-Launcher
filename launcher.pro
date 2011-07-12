@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     src/gui/mainwidget.cpp \
     src/parsers/circle/circleparseonline.cpp \
     src/parsers/circle/forumdisplayparser.cpp \
-    src/parsers/circle/forumthreadparser.cpp
+    src/parsers/circle/forumthreadparser.cpp \
+    src/parsers/forummgr.cpp
 
 
 RESOURCES += \
@@ -54,7 +55,8 @@ HEADERS += \
     src/gui/mainwidget.h \
     src/parsers/circle/circleparseonline.h \
     src/parsers/circle/forumdisplayparser.h \
-    src/parsers/circle/forumthreadparser.h
+    src/parsers/circle/forumthreadparser.h \
+    src/parsers/forummgr.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \
