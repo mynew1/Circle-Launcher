@@ -1,12 +1,12 @@
 #include <QtGui/QApplication>
 #include "src/gui/mainwindow.h"
-#include "src/parsers/circle/forumdisplayparser.h"
+#include "src/parsers/circle/forumthreadparser.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    ForumDisplayParser parser;
-    parser.setPage(QUrl("http://forum.wowcircle.com/forumdisplay.php?f=13"));
+    ForumThreadParser parser;
+    parser.setPage(QUrl("http://forum.wowcircle.com/showthread.php?t=53664"));
     MainWindow w;
     w.show();
     return a.exec();

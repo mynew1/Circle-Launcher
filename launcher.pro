@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     src/addon/zipsearch.cpp \
     src/gui/mainwidget.cpp \
     src/parsers/circle/circleparseonline.cpp \
-    src/parsers/circle/forumdisplayparser.cpp
+    src/parsers/circle/forumdisplayparser.cpp \
+    src/parsers/circle/forumthreadparser.cpp
 
 
 RESOURCES += \
@@ -52,7 +53,8 @@ HEADERS += \
     src/addon/zipsearch.h \
     src/gui/mainwidget.h \
     src/parsers/circle/circleparseonline.h \
-    src/parsers/circle/forumdisplayparser.h
+    src/parsers/circle/forumdisplayparser.h \
+    src/parsers/circle/forumthreadparser.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \

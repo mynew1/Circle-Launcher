@@ -27,6 +27,8 @@ void ForumDisplayParser::Parse()
     ParseTitles();
     ParseAuthors();
     ParseLastPostDate();
+
+    emit ParsingDone();
 }
 
 int ForumDisplayParser::ParseThreadsCount()
