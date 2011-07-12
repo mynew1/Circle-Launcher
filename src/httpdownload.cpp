@@ -1,5 +1,6 @@
 #include "httpdownload.h"
 
+
 HttpDownload::HttpDownload(QObject *parent) : QObject(parent)
 {
     processDone = false;
@@ -71,11 +72,22 @@ void HttpDownload::updateDataReadProgress(qint64 bytesRead, qint64 totalBytes)
     }
 }
 
+QString HttpDownload::getDownloadStrData()
+{
+    if(!processDone)
+        return "\0";
+    QTextCodec::setCodecForLocale(QTextCodec::codecForLocale());
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("Windows-1251"));
+    return reply->readAll();
+}
+
 QByteArray HttpDownload::getDownloadData()
 {
     if(!processDone)
         return "\0";
-    return reply->readAll();
+    QTextCodec *codec=QTextCodec::codecForName("Windows-1251");
+
+    return QByteArray(codec->toUnicode(reply->readAll()).toLocal8Bit());
 }
 
 bool HttpDownload::SaveToFile(QString path)

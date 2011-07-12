@@ -21,13 +21,15 @@ private:
 
 protected:
     HttpDownload *download;
-    QByteArray parsingData;
+    QString parsingData;
     bool IsDataReady() { return dataReady; }
 
 public:
     Parser();
     Parser(QUrl url);
     ~Parser();
+
+    void setParsingData(QString _data) { parsingData = _data; }
 
     QUrl GetParseUrl() { return parseUrl; }
     void SetParseUrl(QUrl _url);

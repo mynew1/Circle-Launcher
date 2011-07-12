@@ -35,7 +35,8 @@ void Parser::Abort()
 
 void Parser::EmitDataCollected()
 {
-    parsingData = download->getDownloadData();
+    parsingData = download->getDownloadStrData();
+//    qDebug() << parsingData;
     if (!parsingData.isNull())
     {
         dataReady   = true;
@@ -50,6 +51,8 @@ bool Parser::SearchSegments(QString _startSegment, QString _endSegment)
         qWarning() << "Data is not ready.";
         return false;
     }
+    QTextCodec::setCodecForLocale(QTextCodec::codecForLocale());
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("Windows-1251"));
 
     startSegment = _startSegment;
     endSegment   = _endSegment;
@@ -57,7 +60,7 @@ bool Parser::SearchSegments(QString _startSegment, QString _endSegment)
     dataCursor = 0;
     isSegmentExists = false;
 
-    QString data(parsingData);
+    QString data = parsingData;
     qint32 startIndex = data.indexOf(startSegment, dataCursor);
     qint32 endIndex   = data.indexOf(endSegment, startIndex + startSegment.count());
 
@@ -78,7 +81,7 @@ int Parser::SegmentsCount()
     if (!isSegmentExists)
         return 0;
 
-    QString data(parsingData);
+    QString data = parsingData;
     qint32 startIndex;
     qint32 endIndex;
     qint32 tmpCusror = 0;
@@ -98,7 +101,7 @@ bool Parser::NextSegment()
     if (!isSegmentExists)
         return 0;
 
-    QString data(parsingData);
+    QString data = parsingData;
     qint32 startIndex = data.indexOf(startSegment, dataCursor);
     qint32 endIndex   = data.indexOf(endSegment, startIndex + startSegment.count());
 
@@ -135,7 +138,7 @@ QString Parser::CutString(QString str, qint32 begIndex, qint32 endIndex)
 
 void Parser::DeleteStrFromData(QString str)
 {
-    QString data(parsingData);
+    QString data = parsingData;
     int index = data.indexOf(str);
     if (index > 0)
         parsingData.remove(index,str.count());

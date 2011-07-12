@@ -8,6 +8,7 @@
 #include <QFileInfo>
 #include <QStringList>
 #include <QUrl>
+#include <QTextCodec>
 
 QT_BEGIN_NAMESPACE
 class QNetworkReply;
@@ -26,6 +27,7 @@ public:
 
 public slots:
     QByteArray getDownloadData();
+    QString getDownloadStrData();
     bool SaveToFile(QString path);
 
 private slots:

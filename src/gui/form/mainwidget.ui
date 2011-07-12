@@ -100,7 +100,7 @@ QProgressBar::chunk:hover{
       <number>4000</number>
      </property>
      <property name="format">
-      <string notr="true">%v</string>
+      <string notr="true">%v/%m</string>
      </property>
     </widget>
     <widget class="QWidget" name="portretWidget" native="true">
@@ -403,7 +403,9 @@ QPushButton#infoButton:hover{
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;Автор: n0n4m3&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;Тема: 08.07.2011 - 10.07.2011 / Updatepack 56/58&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a name=&quot;post_message_1456403&quot;&gt;&lt;/a&gt;Статус: x20&lt;br /&gt;&lt;br /&gt;Предыдущее обновление 55: &lt;a href=&quot;http://forum.wowcircle.com/showthread.php?t=93730&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://forum.wowcircle.com/showthread.php?t=93730&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;Срок применения на другие сервера проекта: В процессе применения на logon.&lt;br /&gt;&lt;br /&gt;Список изменений:&lt;br /&gt;&lt;br /&gt;- Исправлена работа предмета Печать мстительного сердца для дк.&lt;br /&gt;- Исправлена работа предмета Глаз Праматери.&lt;br /&gt;- Исправлена работа таланта Костяной щит.&lt;br /&gt;- Исправлена работа таланта Тотемная ярость.&lt;br /&gt;- Исправлена работа спелла Оружие неистовства ветра.&lt;br /&gt;- Исправлена работа Тотема заземления.&lt;br /&gt;- Исправлена работа спелла Гнев деревьев.&lt;br /&gt;- Исправлено игнорирование брони спеллом Глубокая рана.&lt;br /&gt;- Демонический круг теперь не выводит из комбата.&lt;br /&gt;- Переписана механика работы отражений заклинаний.&lt;br /&gt;- Реализована проверка геодаты для тотемов.&lt;br /&gt;- Теперь чарж эффекты нельзя использовать в полете.&lt;br /&gt;&lt;br /&gt;Updatepack 57/58.&lt;br /&gt;&lt;br /&gt;Список изменений:&lt;br /&gt;&lt;br /&gt;- Исправлен спелл Вихрь Клинков.&lt;br /&gt;- Исправлены коэффициенты скалирования от спд для спелла Быстрина.&lt;br /&gt;- Исправлены коэффициенты скалирования от апа для спелла Реванш.&lt;br /&gt;- Исправлены коэффициенты скалирования от апа для спелла Кровоточащая рана.&lt;br /&gt;- Исправлены коэффициенты скалирования от спд для спелла Щит молний.&lt;br /&gt;- Исправлен спелл Божественная буря(by Ramusik).&lt;br /&gt;- Исправлены коэффициенты скалирования от спд для спелла Щит земли(by Ramusik).&lt;br /&gt;- Исправлен прок спелла Печать Праведности(by Ramusik).&lt;br /&gt;- Исправлен талант Приливные волны(by Ramusik).&lt;br /&gt;- Устранено 2 причины падения сервера.&lt;br /&gt;&lt;br /&gt;Дату последнего обновления вы всегда сможете узнать, введя в игре команду .server info &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="openExternalLinks">
       <bool>true</bool>
