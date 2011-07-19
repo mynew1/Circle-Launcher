@@ -119,3 +119,15 @@ void MainWindow::UpdateRealms()
     ui->realmCombo->clear();
     ui->realmCombo->addItems(ls);
 }
+
+void MainWindow::on_playButton_clicked()
+{
+    game.setGamePath(settings->getGamePath());
+    game.setClearCacheBefore(settings->getIsCleanCache());
+    game.setClearWtfBefore(settings->getIsCleanWtf());
+
+    QString realmList = settings->getRealms().at(ui->realmCombo->currentIndex()).realmUrl;
+    game.setRealmList(realmList);
+
+    game.StartGame();
+}

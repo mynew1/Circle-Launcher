@@ -5,6 +5,7 @@
 #include "addonswidget.h"
 #include "src/gui/mainwidget.h"
 #include "src/gui/settingsform.h"
+#include "src/game.h"
 #include <QPushButton>
 
 namespace Ui {
@@ -32,6 +33,8 @@ private slots:
     void UpdateRealms();
 
 
+    void on_playButton_clicked();
+
 private:
     void Init();
     Ui::MainWindow *ui;
@@ -39,6 +42,7 @@ private:
     MainWidget     *mw;
     SettingsForm    settingsForm;
     Settings       *settings;
+    Game            game;
 
     void UnActiveTabs();
     void ActiveTab(QPushButton *button);

@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     src/parsers/forummgr.cpp \
     src/gui/realmminiwidget.cpp \
     src/settings.cpp \
-    src/gui/settingsform.cpp
+    src/gui/settingsform.cpp \
+    src/game.cpp
 
 
 RESOURCES += \
@@ -62,7 +63,8 @@ HEADERS += \
     src/parsers/forummgr.h \
     src/gui/realmminiwidget.h \
     src/settings.h \
-    src/gui/settingsform.h
+    src/gui/settingsform.h \
+    src/game.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \
