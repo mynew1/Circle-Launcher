@@ -33,7 +33,11 @@ int CircleParseOnline::ParseRealmsCount()
 
 void CircleParseOnline::ParseNames()
 {
+#ifdef Q_OS_WIN32
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("Windows-1251"));
+#else
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+#endif
     int i = 0;
     if (parser.SearchSegments("<div class=\"info\">","<br>"))
         do {
