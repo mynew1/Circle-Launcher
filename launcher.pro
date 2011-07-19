@@ -73,4 +73,7 @@ FORMS += \
     src/gui/form/realmminiwidget.ui \
     src/gui/form/settingsform.ui
 
+RC_FILE += \
+    res.rc
+
 INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib
