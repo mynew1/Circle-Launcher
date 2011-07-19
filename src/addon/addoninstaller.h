@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QDebug>
 #include <QDir>
-#include "src/addon/zip/qzipreader_p.h"
+#include "src/addon/zip/myqzipreader_p.h"
 
 class AddonInstaller : public QObject
 {

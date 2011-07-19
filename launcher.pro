@@ -21,7 +21,7 @@ SOURCES += main.cpp\
     src/parsers/curse/curseparsedownloadurl.cpp \
     src/gui/downloadinfofilter.cpp \
     src/addon/downloadqueue.cpp \
-    src/addon/zip/qzip.cpp \
+    src/addon/zip/myqzip.cpp \
     src/addon/addoninstaller.cpp \
     src/gui/addoninstallwidget.cpp \
     src/addon/zipsearch.cpp \
@@ -50,7 +50,7 @@ HEADERS += \
     src/gui/downloadinfofilter.h \
     src/addon/downloadqueue.h \
     src/addon/zip/qzipwriter_p.h \
-    src/addon/zip/qzipreader_p.h \
+    src/addon/zip/myqzipreader_p.h \
     src/addon/addoninstaller.h \
     src/addon/zip/zlib.h \
     src/addon/zip/zconf.h \
