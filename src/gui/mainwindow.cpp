@@ -7,26 +7,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QStringList ls;
-    ls << "logon" << "logon2" << "logon3";
+    settings = new Settings;
+}
 
-    QString style = "QLineEdit:hover {"
-                        "background-color: transparent;"
-                    "}";
-
-    ui->realmCombo->addItems(ls);
-    ui->realmCombo->setEditable(true);
-    ui->realmCombo->lineEdit()->setStyleSheet(style);
-    ui->realmCombo->lineEdit()->setReadOnly(true);
-    ui->realmCombo->lineEdit()->setAlignment(Qt::AlignRight);
-
-    for(int i = 0; i < ui->realmCombo->count(); i++)
-        ui->realmCombo->setItemData(i, Qt::AlignRight, Qt::TextAlignmentRole);
-
-    aw = new AddonsWidget(ui->mainWidget);
-    mw = new MainWidget(ui->mainWidget);
-
-    on_mainButton_clicked();
+MainWindow::MainWindow(Settings *_settings, QWidget *parent):
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    settings = new Settings;
+    setSettings(_settings);
 }
 
 MainWindow::~MainWindow()
@@ -81,4 +71,51 @@ void MainWindow::on_addonButton_clicked()
 void MainWindow::on_arenaButton_clicked()
 {
     ActiveTab(ui->arenaButton);
+}
+
+void MainWindow::on_toolButton_clicked()
+{
+    settingsForm.show();
+}
+
+void MainWindow::Init()
+{
+
+    QString style = "QLineEdit:hover {"
+                        "background-color: transparent;"
+                    "}";
+
+    ui->realmCombo->setEditable(true);
+    ui->realmCombo->lineEdit()->setStyleSheet(style);
+    ui->realmCombo->lineEdit()->setReadOnly(true);
+    ui->realmCombo->lineEdit()->setAlignment(Qt::AlignRight);
+
+    for(int i = 0; i < ui->realmCombo->count(); i++)
+        ui->realmCombo->setItemData(i, Qt::AlignRight, Qt::TextAlignmentRole);
+
+    aw = new AddonsWidget(settings, ui->mainWidget);
+    mw = new MainWidget(settings, ui->mainWidget);
+
+    connect(&settingsForm, SIGNAL(RealmsChanged()), this, SLOT(UpdateRealms()));
+
+    UpdateRealms();
+    on_mainButton_clicked();
+}
+
+void MainWindow::setSettings(Settings *_settings)
+{
+    settings = _settings;
+    settingsForm.setSettings(_settings);
+    Init();
+}
+
+void MainWindow::UpdateRealms()
+{
+    QList<Realm> realms = settings->getRealms();
+    QStringList ls;
+    for(int i = 0; i < realms.size(); ++i)
+        ls << realms.at(i).realmName;
+
+    ui->realmCombo->clear();
+    ui->realmCombo->addItems(ls);
 }

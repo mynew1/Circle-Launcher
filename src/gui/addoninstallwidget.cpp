@@ -1,6 +1,6 @@
-#include "addonintallwidget.h"
+#include "addoninstallwidget.h"
 
-AddonIntallWidget::AddonIntallWidget(QWidget *parent) :
+AddonInstallWidget::AddonInstallWidget(QWidget *parent) :
     QWidget(parent)
 {
     table = new QTableWidget(this);
@@ -8,13 +8,13 @@ AddonIntallWidget::AddonIntallWidget(QWidget *parent) :
             this, SLOT(tableCellClicked(int,int)));
 }
 
-AddonIntallWidget::AddonIntallWidget(QString aPath, QString dPath)
+AddonInstallWidget::AddonInstallWidget(QString aPath, QString dPath)
 {
     setDownloadPath(dPath);
     setAddonPath(aPath);
 }
 
-void AddonIntallWidget::show()
+void AddonInstallWidget::show()
 {
     QString tableStyle = "background-color: rgb(45, 45, 45);"
                          "font: 9pt \"Arial\";"
@@ -65,14 +65,14 @@ void AddonIntallWidget::show()
 //    emit hideButtons();
 }
 
-void AddonIntallWidget::tableCellClicked(int row, int)
+void AddonInstallWidget::tableCellClicked(int row, int)
 {
     emit hideButtons();
     table->indexWidget(table->model()->index(row,1))->show();
     table->indexWidget(table->model()->index(row,1))->setDisabled(false);
 }
 
-void AddonIntallWidget::installClicked()
+void AddonInstallWidget::installClicked()
 {
     installer.installAddon(zipsPath.at(table->currentRow()),addonPath);
 }

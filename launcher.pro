@@ -23,13 +23,16 @@ SOURCES += main.cpp\
     src/addon/downloadqueue.cpp \
     src/addon/zip/qzip.cpp \
     src/addon/addoninstaller.cpp \
-    src/gui/addonintallwidget.cpp \
+    src/gui/addoninstallwidget.cpp \
     src/addon/zipsearch.cpp \
     src/gui/mainwidget.cpp \
     src/parsers/circle/circleparseonline.cpp \
     src/parsers/circle/forumdisplayparser.cpp \
     src/parsers/circle/forumthreadparser.cpp \
-    src/parsers/forummgr.cpp
+    src/parsers/forummgr.cpp \
+    src/gui/realmminiwidget.cpp \
+    src/settings.cpp \
+    src/gui/settingsform.cpp
 
 
 RESOURCES += \
@@ -50,17 +53,22 @@ HEADERS += \
     src/addon/addoninstaller.h \
     src/addon/zip/zlib.h \
     src/addon/zip/zconf.h \
-    src/gui/addonintallwidget.h \
+    src/gui/addoninstallwidget.h \
     src/addon/zipsearch.h \
     src/gui/mainwidget.h \
     src/parsers/circle/circleparseonline.h \
     src/parsers/circle/forumdisplayparser.h \
     src/parsers/circle/forumthreadparser.h \
-    src/parsers/forummgr.h
+    src/parsers/forummgr.h \
+    src/gui/realmminiwidget.h \
+    src/settings.h \
+    src/gui/settingsform.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \
     src/gui/form/addonswidget.ui \
-    src/gui/form/mainwidget.ui
+    src/gui/form/mainwidget.ui \
+    src/gui/form/realmminiwidget.ui \
+    src/gui/form/settingsform.ui
 
 INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib

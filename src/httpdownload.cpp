@@ -76,8 +76,14 @@ QString HttpDownload::getDownloadStrData()
 {
     if(!processDone)
         return "\0";
-    QTextCodec::setCodecForLocale(QTextCodec::codecForLocale());
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("Windows-1251"));
+    if (url.toString() == "http://wowcircle.com/online.htm")
+    {
+        QTextCodec::setCodecForLocale(QTextCodec::codecForLocale());
+        QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+    } else {
+        QTextCodec::setCodecForLocale(QTextCodec::codecForLocale());
+        QTextCodec::setCodecForCStrings(QTextCodec::codecForName("Windows-1251"));
+    }
     return reply->readAll();
 }
 

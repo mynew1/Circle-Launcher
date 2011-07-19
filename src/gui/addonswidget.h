@@ -7,8 +7,9 @@
 #include "src/parsers/curse/curseaddondetails.h"
 #include "src/parsers/curse/curseparsedownloadurl.h"
 #include "src/gui/downloadinfofilter.h"
-#include "src/gui/addonintallwidget.h"
+#include "src/gui/addoninstallwidget.h"
 #include "src/addon/downloadqueue.h"
+#include "src/settings.h"
 
 namespace Ui {
     class AddonsWidget;
@@ -19,7 +20,7 @@ class AddonsWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit AddonsWidget(QWidget *parent = 0);
+    explicit AddonsWidget(Settings *_settings, QWidget *parent = 0);
     ~AddonsWidget();
 
 private:
@@ -30,7 +31,8 @@ private:
     DownloadInfoFilter     dInfoFilter;
     CurseParseDownloadUrl  dLoadUrlParser;
     DownloadQueue          dLoadQueue;
-    AddonIntallWidget      installWidget;
+    AddonInstallWidget     installWidget;
+    Settings              *settings;
 
     int currentSrchInfo;
 
@@ -40,7 +42,7 @@ public slots:
 
 private slots:
     void on_searchButton_clicked();
-    void on_tableWidget_cellClicked(int row, int column);
+    void on_tableWidget_cellClicked(int row, int/* column*/);
     void on_updateButton_clicked();
     void on_versionCombo_currentIndexChanged(QString );
     void on_filenameCombo_currentIndexChanged(QString );

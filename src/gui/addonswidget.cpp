@@ -2,13 +2,13 @@
 #include "ui_addonswidget.h"
 #include <QMessageBox>
 
-QString downloadPath = "/home/walkline/download/";
-
-AddonsWidget::AddonsWidget(QWidget *parent) :
+AddonsWidget::AddonsWidget(Settings *_settings, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddonsWidget)
 {
     ui->setupUi(this);
+
+    settings = _settings;
 
     curseSearch  = new CurseSearchParser();
     addonDetParser = new CurseAddonDetails();
@@ -27,10 +27,10 @@ AddonsWidget::AddonsWidget(QWidget *parent) :
     ui->tableWidget->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
     ui->downloadFrame->hide();
     ui->progressBar->hide();
-    //will be fixed when implement settings
-    dLoadQueue.setDownloadPath(downloadPath);
-    installWidget.setDownloadPath(downloadPath);
-    installWidget.setAddonPath("/home/walkline/download/addons/");
+
+    dLoadQueue.setDownloadPath(QDir::currentPath()+"/downloads/");
+    installWidget.setDownloadPath(QDir::currentPath()+"/downloads/");
+    installWidget.setAddonPath(settings->getGamePath()+"/Interface/AddOns/");
 
     currentSrchInfo = -1;
 }
@@ -84,7 +84,7 @@ void AddonsWidget::UpdateAddonSrchInfo()
     }
 }
 
-void AddonsWidget::on_tableWidget_cellClicked(int row, int column)
+void AddonsWidget::on_tableWidget_cellClicked(int row, int /*column*/)
 {
     if (currentSrchInfo == row)
         return;
@@ -169,9 +169,6 @@ void AddonsWidget::updateProgress(QUrl url, int prog)
         ui->currDLoadLabel->hide();
     }
 }
-
-
-
 
 void AddonsWidget::on_installButton_clicked()
 {

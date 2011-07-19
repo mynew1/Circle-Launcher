@@ -10,6 +10,12 @@
     <height>425</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>51</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
     <width>400</width>
@@ -253,12 +259,12 @@ background-color: #1a0f08;
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>playButton</tabstop>
-  <tabstop>arenaButton</tabstop>
   <tabstop>mainButton</tabstop>
-  <tabstop>realmCombo</tabstop>
   <tabstop>addonButton</tabstop>
+  <tabstop>arenaButton</tabstop>
+  <tabstop>realmCombo</tabstop>
   <tabstop>toolButton</tabstop>
+  <tabstop>playButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>

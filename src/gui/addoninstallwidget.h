@@ -9,7 +9,7 @@
 #include "src/addon/zipsearch.h"
 #include "src/addon/addoninstaller.h"
 
-class AddonIntallWidget : public QWidget
+class AddonInstallWidget : public QWidget
 {
     Q_OBJECT
 private:
@@ -23,8 +23,8 @@ private:
     AddonInstaller installer;
 
 public:
-    explicit AddonIntallWidget(QWidget *parent = 0);
-    AddonIntallWidget(QString aPath, QString dPath);
+    explicit AddonInstallWidget(QWidget *parent = 0);
+    AddonInstallWidget(QString aPath, QString dPath);
 
     void setDownloadPath(QString dPath) { dLoadPath = dPath; }
     void setAddonPath(QString aPath)    { addonPath = aPath; }

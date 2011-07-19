@@ -419,10 +419,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QWidget#realmsWidget{
-	background-color: rgba(0,0,0,50);
-
-}</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QPushButton" name="nextRealmsButton">

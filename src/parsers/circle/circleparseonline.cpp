@@ -33,10 +33,11 @@ int CircleParseOnline::ParseRealmsCount()
 
 void CircleParseOnline::ParseNames()
 {
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
     int i = 0;
     if (parser.SearchSegments("<div class=\"info\">","<br>"))
         do {
-            realms[i].realmName = parser.GetSegment();
+            realms[i].realmName = tr(parser.GetSegment().toLocal8Bit());
             i++;
         } while (parser.NextSegment());
 }

@@ -1,22 +1,43 @@
 #include "mainwidget.h"
 #include "ui_mainwidget.h"
+#include <QScrollBar>
 
-QString news = "http://forum.wowcircle.com/forumdisplay.php?f=2";
-QString fix  = "http://forum.wowcircle.com/forumdisplay.php?f=120";
-QString info = "http://forum.wowcircle.com/forumdisplay.php?f=3";
-
-MainWidget::MainWidget(QWidget *parent) :
+MainWidget::MainWidget(Settings *_settings, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MainWidget)
 {
     ui->setupUi(this);
+    ui->textBrowser->verticalScrollBar()->hide();
+    ui->textBrowser->horizontalScrollBar()->hide();
+
+    settings = _settings;
+
     pageData = new QString[3];
+
+    int _width  = 160;
+    int _height = 55;
+    realmWidget = new RealmMiniWidget*[4];
+    for (int i = 0; i < 4; ++i)
+    {
+        realmWidget[i] = new RealmMiniWidget(ui->realmsWidget);
+        connect(realmWidget[i], SIGNAL(clicked(RealmMiniWidget*)), this, SLOT(realmMiniWidget_clicked(RealmMiniWidget*)));
+    }
+    realmWidget[1]->setGeometry(_width,0,_width,_height);
+    realmWidget[2]->setGeometry(0,_height,_width,_height);
+    realmWidget[3]->setGeometry(_width,_height,_width,_height);
+
     connect(&page1, SIGNAL(DataCollected(ForumMgr*)), this, SLOT(Update1Forum()));
     connect(&page2, SIGNAL(DataCollected(ForumMgr*)), this, SLOT(Update2Forum()));
     connect(&page3, SIGNAL(DataCollected(ForumMgr*)), this, SLOT(Update3Forum()));
-    page1.setForumPage(QUrl(news));
-    page2.setForumPage(QUrl(fix));
-    page3.setForumPage(QUrl(info));
+    connect(&onlineParser, SIGNAL(ParsingDone()), this, SLOT(UpdateOnline()));
+    connect(&updateTimer, SIGNAL(timeout()), this, SLOT(UpdateAll()));
+
+    UpdateAll();
+
+    realmPage = 1;
+    currOnlineIndex = settings->getDefaultOnlineShown();
+
+    updateTimer.start(settings->getUpdateTime());
 }
 
 MainWidget::~MainWidget()
@@ -78,4 +99,101 @@ void MainWidget::UnActiveForumButton(QPushButton *button)
                           "border-top: 1px solid rgba(0,0,0,80);"
                           "border-bottom: 1px solid rgba(0,0,0,80);"
                           "text-align:left;background-color: rgba(0,0,0,0);}");
+}
+
+void MainWidget::UpdateOnline(int page)
+{
+    if (!page)
+        page = realmPage;
+
+    int maxPages = (onlineParser.getRealmsCount() % 4) ? 1 : 0;
+    maxPages += onlineParser.getRealmsCount() / 4;
+
+    if (maxPages < page)
+        return;
+
+    realmPage = page;
+    for (int widget = 0,  parser = (page - 1) * 4; parser < page * 4; ++widget, ++parser )
+    {
+        if (parser >= onlineParser.getRealmsCount())
+        {
+            realmWidget[widget]->hide();
+            continue;
+        }
+        int online = onlineParser.getRealmsInfo()[parser].online;
+        QString realmName = onlineParser.getRealmsInfo()[parser].realmName;
+
+        if (settings->getMaxOnlineByIndex(parser) < online)
+        {
+            settings->setMaxOnlineByIndex(parser, online);
+            settings->SaveSettings();
+        }
+
+        realmWidget[widget]->show();
+        realmWidget[widget]->setRealmName(realmName);
+        realmWidget[widget]->setMaxOnline(settings->getMaxOnlineByIndex(parser));
+        realmWidget[widget]->setOnline(online);
+        realmWidget[widget]->setIndex(parser);
+    }
+    UpdateMainRealmWidget(currOnlineIndex);
+}
+
+void MainWidget::on_prevRealmsButton_clicked()
+{
+    UpdateOnline(realmPage - 1);
+}
+
+void MainWidget::on_nextRealmsButton_clicked()
+{
+    UpdateOnline(realmPage + 1);
+}
+
+void MainWidget::UpdateAll()
+{
+    page1.setForumPage(settings->getForumView1());
+    page2.setForumPage(settings->getForumView2());
+    page3.setForumPage(settings->getForumView3());
+    onlineParser.startParse();
+    updateTimer.start();
+}
+
+void MainWidget::realmMiniWidget_clicked(RealmMiniWidget *widg)
+{
+    UpdateMainRealmWidget(widg->getIndex());
+}
+
+void MainWidget::UpdateMainRealmWidget(int realmIndex)
+{
+    currOnlineIndex = realmIndex;
+    QString realmName = onlineParser.getRealmsInfo()[realmIndex].realmName;
+    int online = onlineParser.getRealmsInfo()[realmIndex].online;
+    ui->onlineBar->setMaximum(settings->getMaxOnlineByIndex(realmIndex));
+    ui->onlineBar->setValue(online);
+    ui->realmName->setText(realmName);
+    setRealmOnline(onlineParser.getRealmsInfo()[realmIndex].isON);
+}
+
+void MainWidget::on_saveRealmButton_clicked()
+{
+    settings->setDefaultOnlineShown(currOnlineIndex);
+    settings->SaveSettings();
+}
+
+void MainWidget::setRealmOnline(bool online)
+{
+    QString onlineImg = (online) ? "on.png" : "off.png";
+    QString style = QString("QWidget {"
+                                "background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 #3d0d07, stop:0.637681 #6b2403);"
+                                "color: #dcb100;"
+                                "border:1px solid;"
+                                "border-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 #531108, stop:0.637681 #953203);"
+                                "image: url(:/img/%1);"
+                            "}"
+                            "QWidget:hover{"
+                                    "background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 #3d0d07, stop:0.637681 #802b04);"
+                                    "border-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 #64140a, stop:0.637681 #aa3c04);"
+                                    "color:white;"
+                            "}").arg(onlineImg);
+
+    ui->statusWidget->setStyleSheet(style);
 }
