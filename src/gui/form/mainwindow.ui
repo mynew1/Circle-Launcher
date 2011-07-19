@@ -25,6 +25,13 @@
   <property name="windowTitle">
    <string>Circle Launcher 2.0 Beta</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../../../rc.qrc">
+    <normaloff>:/img/logo.ico</normaloff>:/img/logo.ico</iconset>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
     <string notr="true">QWidget#centralWidget {
@@ -266,6 +273,8 @@ background-color: #1a0f08;
   <tabstop>toolButton</tabstop>
   <tabstop>playButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../../rc.qrc"/>
+ </resources>
  <connections/>
 </ui>

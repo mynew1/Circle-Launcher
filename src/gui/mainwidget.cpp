@@ -167,6 +167,13 @@ void MainWidget::UpdateMainRealmWidget(int realmIndex)
     currOnlineIndex = realmIndex;
     QString realmName = onlineParser.getRealmsInfo()[realmIndex].realmName;
     int online = onlineParser.getRealmsInfo()[realmIndex].online;
+
+    if (settings->getMaxOnlineByIndex(realmIndex) < online)
+    {
+        settings->setMaxOnlineByIndex(realmIndex, online);
+        settings->SaveSettings();
+    }
+
     ui->onlineBar->setMaximum(settings->getMaxOnlineByIndex(realmIndex));
     ui->onlineBar->setValue(online);
     ui->realmName->setText(realmName);

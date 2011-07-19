@@ -130,4 +130,6 @@ void MainWindow::on_playButton_clicked()
     game.setRealmList(realmList);
 
     game.StartGame();
+    if (settings->getExitAfterStart())
+        this->close();
 }

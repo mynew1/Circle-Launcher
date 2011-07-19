@@ -27,5 +27,6 @@
         <file>img/class/shaman.png</file>
         <file>img/class/warlock.png</file>
         <file>img/class/warrior.png</file>
+        <file>img/logo.ico</file>
     </qresource>
 </RCC>
