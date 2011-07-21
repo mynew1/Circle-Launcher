@@ -6,6 +6,7 @@ HttpDownload::HttpDownload(QObject *parent) : QObject(parent)
     processDone = false;
     qnam = new QNetworkAccessManager(this);
     currProg = 0;
+    haveError = false;
 }
 
 void HttpDownload::startRequest(QUrl _url)
@@ -16,6 +17,7 @@ void HttpDownload::startRequest(QUrl _url)
 
 void HttpDownload::downloadFile(QUrl _url)
 {
+    haveError = false;
     url = _url;
     httpRequestAborted = false;
     processDone = false;
@@ -46,7 +48,7 @@ void HttpDownload::httpFinished()
 //    qnam->deleteLater();
 //    reply = 0;
     emit readProgress(100);
-    if (!httpRequestAborted)
+    if (!httpRequestAborted && !haveError)
         emit downloadFinished(url);
 }
 
@@ -122,6 +124,6 @@ bool HttpDownload::SaveToFile(QString path)
 
 void HttpDownload::ErrorMassage(QNetworkReply::NetworkError er)
 {
+    haveError = true;
     qDebug() << QString("Error: %1. In download file -").arg(er) << url.toString() ;
-
 }

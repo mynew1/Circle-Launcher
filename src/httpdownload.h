@@ -53,6 +53,7 @@ private:
     bool httpRequestAborted;
     bool processDone;
     int currProg;
+    bool haveError;
 };
 
 #endif
