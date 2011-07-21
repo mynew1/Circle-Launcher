@@ -118,6 +118,7 @@ void MainWindow::UpdateRealms()
 
     ui->realmCombo->clear();
     ui->realmCombo->addItems(ls);
+    ui->realmCombo->setCurrentIndex(settings->getDefaultRealmIndex());
 }
 
 void MainWindow::on_playButton_clicked()
@@ -125,6 +126,8 @@ void MainWindow::on_playButton_clicked()
     game.setGamePath(settings->getGamePath());
     game.setClearCacheBefore(settings->getIsCleanCache());
     game.setClearWtfBefore(settings->getIsCleanWtf());
+    settings->setDefaultRealmIndex(ui->realmCombo->currentIndex());
+    settings->SaveSettings();
 
     QString realmList = settings->getRealms().at(ui->realmCombo->currentIndex()).realmUrl;
     game.setRealmList(realmList);
