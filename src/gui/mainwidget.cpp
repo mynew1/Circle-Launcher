@@ -164,6 +164,9 @@ void MainWidget::realmMiniWidget_clicked(RealmMiniWidget *widg)
 
 void MainWidget::UpdateMainRealmWidget(int realmIndex)
 {
+    if (onlineParser.getRealmsCount() < realmIndex)
+        return;
+
     currOnlineIndex = realmIndex;
     QString realmName = onlineParser.getRealmsInfo()[realmIndex].realmName;
     int online = onlineParser.getRealmsInfo()[realmIndex].online;
