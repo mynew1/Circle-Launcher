@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     src/gui/realmminiwidget.cpp \
     src/settings.cpp \
     src/gui/settingsform.cpp \
-    src/game.cpp
+    src/game.cpp \
+    src/characters.cpp
 
 
 RESOURCES += \
@@ -64,7 +65,8 @@ HEADERS += \
     src/gui/realmminiwidget.h \
     src/settings.h \
     src/gui/settingsform.h \
-    src/game.h
+    src/game.h \
+    src/characters.h
 
 FORMS += \
     src/gui/form/mainwindow.ui \
