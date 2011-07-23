@@ -41,7 +41,6 @@ QStringList Characters::getCharDataFiles()
 void Characters::processFile(QFile *file)
 {
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
-//    realm = QObject::tr("SoS-WoW x100 3.3.5а");
 
     QStringList names;
     QList< QPair<QString, QString> > charClass;
@@ -181,7 +180,7 @@ bool Characters::isMaleStrToBool(QString str)
 Character Characters::createUnknownChar()
 {
     Character tmp;
-    tmp.name = unknown;
+    tmp.name = "unknown";
     tmp.charClass = "Warrior";
     tmp.race = RACE_UNKNOWN;
     tmp.isMale = false;
@@ -195,7 +194,7 @@ Character Characters::getCharacterByIndex(int index)
     if (index > characters.size() || !characters.size())
         return createUnknownChar();
 
-    return characters.at(i);
+    return characters.at(index);
 }
 
 QList<Character> Characters::getCharacters()
@@ -204,4 +203,9 @@ QList<Character> Characters::getCharacters()
         characters.append(createUnknownChar());
 
     return characters;
+}
+
+int Characters::getCharactersCount()
+{
+    return characters.size();
 }

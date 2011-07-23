@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication a(argc, argv);    
     Settings *settings = new Settings;
     MainWindow w(settings);
     w.show();

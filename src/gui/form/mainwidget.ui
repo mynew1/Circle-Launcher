@@ -290,7 +290,7 @@ QWidget:hover{
 	color:white;
 }
 QWidget{
-	image: url(:/img/class/warrior.png);
+	image: url(:/img/class/Warrior.png);
 }</string>
      </property>
     </widget>
