@@ -125,7 +125,7 @@ QString Characters::getRealClassName(QString str)
     if (str == QObject::tr("Воин"))
         return "Warrior";
     if (str == QObject::tr("Жрец") || str == QObject::tr("Жрица"))
-        return "Pries";
+        return "Priest";
     if (str == QObject::tr("Маг"))
         return "Mage";
     if (str == QObject::tr("Охотник")|| str == QObject::tr("Охотница"))
