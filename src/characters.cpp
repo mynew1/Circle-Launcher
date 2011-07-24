@@ -124,19 +124,19 @@ QString Characters::getRealClassName(QString str)
         return "Druid";
     if (str == QObject::tr("Воин"))
         return "Warrior";
-    if (str == QObject::tr("Жрец"))
+    if (str == QObject::tr("Жрец") || str == QObject::tr("Жрица"))
         return "Pries";
     if (str == QObject::tr("Маг"))
         return "Mage";
-    if (str == QObject::tr("Охотник"))
+    if (str == QObject::tr("Охотник")|| str == QObject::tr("Охотница"))
         return "Hunter";
     if (str == QObject::tr("Паладин"))
         return "Paladin";
-    if (str == QObject::tr("Разбойник"))
+    if (str == QObject::tr("Разбойник") || str == QObject::tr("Разбойница"))
         return "Rogue";
-    if (str == QObject::tr("Чернокнижник"))
+    if (str == QObject::tr("Чернокнижник") || str == QObject::tr("Чернокнижница"))
         return "Warlock";
-    if (str == QObject::tr("Шаман"))
+    if (str == QObject::tr("Шаман") || str == QObject::tr("Шаманка"))
         return "Shaman";
     else
         return str;
