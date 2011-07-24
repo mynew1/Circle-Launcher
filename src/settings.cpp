@@ -83,6 +83,9 @@ void Settings::LoadSettings()
 
 void Settings::SaveSettings()
 {
+    QFile file(settings.fileName());
+    file.remove();
+
     settings.clear();
 
     settings.setValue("isAlreadyLoaded", isAlreadyLoaded);

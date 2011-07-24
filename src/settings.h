@@ -3,6 +3,7 @@
 
 #include <QSettings>
 #include <QDebug>
+#include <QFile>
 
 #define MAX_REALMS_ONLINE_COUNT 25
 
