@@ -18,3 +18,14 @@ function frame:OnEvent(event, arg1)
 end
 
 frame:SetScript("OnEvent", frame.OnEvent);
+SLASH_CHARDATA1 = "/cleardata";
+function SlashCmdList.CHARDATA(msg)
+    print("Data cleared.");
+    CharactersData = {};
+    CharactersData[GetRealmName().."@"..UnitName("player").."-name"]    = UnitName("player");
+    CharactersData[GetRealmName().."@"..UnitName("player").."-level"]   = UnitLevel("player");
+    CharactersData[GetRealmName().."@"..UnitName("player").."-race"]    = UnitRace("player");
+    CharactersData[GetRealmName().."@"..UnitName("player").."-class"]   = UnitClass("player");
+    CharactersData[GetRealmName().."@"..UnitName("player").."-lastIn"]  = date("%m/%d/%y %H:%M:%S");
+    CharactersData[GetRealmName().."@"..UnitName("player").."-sex"]     = UnitSex("player");
+end
