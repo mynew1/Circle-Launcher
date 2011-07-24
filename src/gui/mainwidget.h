@@ -66,6 +66,7 @@ private slots:
     void on_saveRealmButton_clicked();
 
     void on_nextCharButton_clicked();
+    void on_saveCharButton_clicked();
 };
 
 #endif // MAINWIDGET_H

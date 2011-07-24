@@ -185,7 +185,9 @@ void MainWidget::UpdateMainRealmWidget(int realmIndex)
     ui->realmName->setText(realmName);
     setRealmOnline(onlineParser.getRealmsInfo()[realmIndex].isON);
 
-    UpdateCharacters(0, realmName);
+    characters->SearchByRealm(realmName);
+    int charIndex = characters->getIndexByName(settings->getDefaultCharName());
+    UpdateCharacters(charIndex);
 }
 
 void MainWidget::on_saveRealmButton_clicked()
@@ -253,4 +255,10 @@ void MainWidget::UpdateCharacters(int index, QString realm)
 void MainWidget::on_nextCharButton_clicked()
 {
     UpdateCharacters(currCharIndex + 1);
+}
+
+void MainWidget::on_saveCharButton_clicked()
+{
+    settings->setDefaultCharName(ui->charNameLabel->text());
+    settings->SaveSettings();
 }

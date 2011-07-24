@@ -24,6 +24,7 @@ public:
     QString       getGamePath()  { return gamePath;          }
     QList<Realm>    getRealms()  { return realms;            }
     int  getDefaultRealmIndex()  { return defaultRealmIndex; }
+    QString getDefaultCharName() { return defaultCharName;   }
     bool      getIsCleanCache()  { return isCleanCache;      }
     bool        getIsCleanWtf()  { return isCleanWtf;        }
     int getDefaultOnlineShown()  { return defaultOnlineShown;}
@@ -37,6 +38,7 @@ public:
 
     void setGamePath(QString path)        { gamePath = path; }
     void setDefaultRealmIndex(int index)  { defaultRealmIndex = index; }
+    void setDefaultCharName(QString name) { defaultCharName = name; }
     void setIsCleanCache(bool cache)      { isCleanCache = cache; }
     void setIsCleanWtf(bool wtf)          { isCleanWtf = wtf; }
     void setDefaultOnlineShown(int index) { defaultOnlineShown = index; }
@@ -60,6 +62,7 @@ private:
 
     QList<Realm> realms;
     int defaultRealmIndex;
+    QString defaultCharName;
 
     //clean everytime before start
     bool isCleanCache;

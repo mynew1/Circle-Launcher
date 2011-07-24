@@ -21,6 +21,7 @@ Settings::Settings() : settings("walkline", "CircleLauncher")
     realms.append(logon3);
 
     defaultRealmIndex = 0;
+    defaultCharName = "";
 
     isCleanCache = false;
     isCleanWtf   = false;
@@ -61,6 +62,7 @@ void Settings::LoadSettings()
     }
     settings.endArray();
     defaultRealmIndex = settings.value("defaultRealmIndex").toInt();
+    defaultCharName = settings.value("defaultCharName").toString();
 
     isCleanCache = settings.value("isCleanCache").toBool();
     isCleanWtf = settings.value("isCleanWtf").toBool();
@@ -102,6 +104,7 @@ void Settings::SaveSettings()
     }
     settings.endArray();
     settings.setValue("defaultRealmIndex", defaultRealmIndex);
+    settings.setValue("defaultCharName", defaultCharName);
 
     settings.setValue("isCleanCache", isCleanCache);
     settings.setValue("isCleanWtf", isCleanWtf);
