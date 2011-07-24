@@ -34,11 +34,13 @@ MainWidget::MainWidget(Settings *_settings, QWidget *parent) :
 
     UpdateAll();
 
+    currCharIndex = 0;
     realmPage = 1;
     currOnlineIndex = settings->getDefaultOnlineShown();
 
     updateTimer.start(settings->getUpdateTime());
-}
+    characters = new Characters(settings->getGamePath());
+ }
 
 MainWidget::~MainWidget()
 {
@@ -169,6 +171,7 @@ void MainWidget::UpdateMainRealmWidget(int realmIndex)
 
     currOnlineIndex = realmIndex;
     QString realmName = onlineParser.getRealmsInfo()[realmIndex].realmName;
+    currRealmName = realmName;
     int online = onlineParser.getRealmsInfo()[realmIndex].online;
 
     if (settings->getMaxOnlineByIndex(realmIndex) < online)
@@ -181,6 +184,8 @@ void MainWidget::UpdateMainRealmWidget(int realmIndex)
     ui->onlineBar->setValue(online);
     ui->realmName->setText(realmName);
     setRealmOnline(onlineParser.getRealmsInfo()[realmIndex].isON);
+
+    UpdateCharacters(0, realmName);
 }
 
 void MainWidget::on_saveRealmButton_clicked()
@@ -206,4 +211,46 @@ void MainWidget::setRealmOnline(bool online)
                             "}").arg(onlineImg);
 
     ui->statusWidget->setStyleSheet(style);
+}
+
+void MainWidget::setCharClass(QString _class)
+{
+    QString style = QString("QWidget {"
+                                    "background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 #3d0d07, stop:0.637681 #6b2403);"
+                                    "color: #dcb100;"
+                                    "border:1px solid;"
+                                    "border-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 #531108, stop:0.637681 #953203);"
+                            "}"
+                            "QWidget:hover {"
+                                    "background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 #3d0d07, stop:0.637681 #802b04);"
+                                    "border-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 #64140a, stop:0.637681 #aa3c04);"
+                                    "color:white;"
+                            "}"
+                            "QWidget {"
+                                    "image: url(:/img/class/%1.png);"
+                            "}").arg(_class);
+
+    ui->classWidget->setStyleSheet(style);
+}
+
+void MainWidget::UpdateCharacters(int index, QString realm)
+{
+    if (!realm.isEmpty())
+        characters->SearchByRealm(realm);
+
+    if (index >= characters->getCharactersCount())
+        index = 0;
+    currCharIndex = index;
+
+    QString name = characters->getCharacterByIndex(index).name;
+    QString level = QString::number(characters->getCharacterByIndex(index).level);
+    QString charClass = characters->getCharacterByIndex(index).charClass;
+    ui->charNameLabel->setText(name);
+    ui->levelLabel->setText(level);
+    setCharClass(charClass);
+}
+
+void MainWidget::on_nextCharButton_clicked()
+{
+    UpdateCharacters(currCharIndex + 1);
 }

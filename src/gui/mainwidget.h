@@ -7,6 +7,7 @@
 #include "src/gui/realmminiwidget.h"
 #include "src/parsers/circle/circleparseonline.h"
 #include "src/settings.h"
+#include "src/characters.h"
 #include <QTimer>
 
 namespace Ui {
@@ -28,16 +29,20 @@ private:
     ForumMgr page3;
     Settings *settings;
     CircleParseOnline onlineParser;
+    Characters *characters;
     uint realmPage;
 
     QString *pageData;
 
     int currOnlineIndex;
+    QString currRealmName;
+    int currCharIndex;
 
     RealmMiniWidget **realmWidget;
     QTimer updateTimer;
 
     void setRealmOnline(bool online);
+    void setCharClass(QString _class);
 
 private slots:
     void UpdateAll();
@@ -47,6 +52,7 @@ private slots:
     void Update3Forum();
     void UpdateOnline(int page = 0);
     void UpdateMainRealmWidget(int realmIndex);
+    void UpdateCharacters(int index, QString realm = "");
 
     void ActiveForumButton(QPushButton *button);
     void UnActiveForumButton(QPushButton *button);
@@ -59,6 +65,7 @@ private slots:
     void realmMiniWidget_clicked(RealmMiniWidget*);
     void on_saveRealmButton_clicked();
 
+    void on_nextCharButton_clicked();
 };
 
 #endif // MAINWIDGET_H

@@ -209,3 +209,11 @@ int Characters::getCharactersCount()
 {
     return characters.size();
 }
+
+int Characters::getIndexByName(QString name)
+{
+    for (int i = 0; i < characters.size(); ++i)
+        if (characters.at(i).name == name)
+            return i;
+    return 0;
+}

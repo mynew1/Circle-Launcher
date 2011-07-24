@@ -47,6 +47,7 @@ public:
     Character getCharacterByIndex(int index);
     QList<Character> getCharacters();
     int getCharactersCount();
+    int getIndexByName(QString name);
 
 private:
     QStringList getCharDataFiles();
