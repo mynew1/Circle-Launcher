@@ -58,8 +58,16 @@ void ForumThreadParser::ParseDatesTimes()
 
             if (dateStr == tr("Вчера"))
             {
-                int day   = QDate::currentDate().day() - 1;
-                int month = QDate::currentDate().month();
+                int day;
+                int month;
+                if (QDate::currentDate().day() == 1) {
+                    QDate _date(QDate::currentDate().year(), QDate::currentDate().month() - 1, 1);
+                    day   = _date.daysInMonth();
+                    month = _date.month();
+                } else {
+                    day   = QDate::currentDate().day() - 1;
+                    month = QDate::currentDate().month();
+                }
                 int year  = QDate::currentDate().year();
                 dateStr   = QDate(year, month, day).toString("dd.MM.yyyy");
             }
