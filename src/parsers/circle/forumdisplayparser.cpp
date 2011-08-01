@@ -85,8 +85,14 @@ void ForumDisplayParser::ParseLastPostDate()
 
             QStringList listDMY = dateStr.split(".");
             QStringList listHM  = timeStr.split(":");
-            QDate date(listDMY.at(2).toInt(), listDMY.at(1).toInt(), listDMY.at(0).toInt());
-            QTime time(listHM.at(0).toInt(), listHM.at(1).toInt());
+            QDate date;
+            QTime time;
+
+            if (listDMY.size() == 3)
+                date.setDate(listDMY.at(2).toInt(), listDMY.at(1).toInt(), listDMY.at(0).toInt());
+            if (listHM.size() == 2)
+                time.setHMS(listHM.at(0).toInt(), listHM.at(1).toInt(), 0);
+
 
             QDateTime dataTime(date,time);
             threads[i].lastPostDate = dataTime;
