@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     settings = new Settings;
+    createActions();
+    createTrayIcon();
 }
 
 MainWindow::MainWindow(Settings *_settings, QWidget *parent):
@@ -17,6 +19,8 @@ MainWindow::MainWindow(Settings *_settings, QWidget *parent):
     ui->setupUi(this);
     settings = new Settings;
     setSettings(_settings);
+    createActions();
+    createTrayIcon();
 }
 
 MainWindow::~MainWindow()
@@ -134,11 +138,63 @@ void MainWindow::on_playButton_clicked()
 
     game.StartGame();
     if (settings->getExitAfterStart())
-        this->close();
+        qApp->exit();
 }
 
 void MainWindow::on_cleanButton_clicked()
 {
     game.setGamePath(settings->getGamePath());
     game.ClearCache();
+}
+
+void MainWindow::createActions()
+{
+    playAction = new QAction(tr("Play"), this);
+    playAction->setIcon(QIcon(":/img/play16x16.png"));
+    connect(playAction, SIGNAL(triggered()), this, SLOT(on_playButton_clicked()));
+
+
+    quitAction = new QAction("&Exit", this);
+    connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+}
+
+void MainWindow::createTrayIcon()
+{
+    trayIconMenu = new QMenu(this);
+    trayIconMenu->addAction(playAction);
+    trayIconMenu->addSeparator();
+    trayIconMenu->addAction(quitAction);
+
+    trayIcon = new QSystemTrayIcon(this);
+    trayIcon->setIcon(QIcon(":/img/logo.ico"));
+    trayIcon->show();
+    trayIcon->setContextMenu(trayIconMenu);
+    connect(trayIcon, SIGNAL(messageClicked()), this, SLOT(showMaximized()));
+    connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(activateTrayIcon(QSystemTrayIcon::ActivationReason)));
+}
+
+void MainWindow::activateTrayIcon(QSystemTrayIcon::ActivationReason reason)
+{
+    if(reason == QSystemTrayIcon::Context)
+        trayIconMenu->activateWindow();
+
+    switch(reason)
+    {
+//    case QSystemTrayIcon::MiddleClick:
+//        showTrayMessage();
+//        break;
+    case QSystemTrayIcon::DoubleClick:
+        showNormal();
+        break;
+    default:
+        break;
+    }
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (trayIcon->isVisible()) {
+        hide();
+        event->ignore();
+    }
 }

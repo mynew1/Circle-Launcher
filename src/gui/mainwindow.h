@@ -7,6 +7,9 @@
 #include "src/gui/settingsform.h"
 #include "src/game.h"
 #include <QPushButton>
+#include <QCloseEvent>
+#include <QSystemTrayIcon>
+
 
 namespace Ui {
     class MainWindow;
@@ -31,7 +34,8 @@ private slots:
 
     void on_toolButton_clicked();
     void UpdateRealms();
-
+    void activateTrayIcon(QSystemTrayIcon::ActivationReason reason);
+    void closeEvent(QCloseEvent *);
 
     void on_playButton_clicked();
 
@@ -48,6 +52,15 @@ private:
 
     void UnActiveTabs();
     void ActiveTab(QPushButton *button);
+
+    //tray items
+    QSystemTrayIcon *trayIcon;
+    QMenu *trayIconMenu;
+    QAction *playAction;
+    QAction *quitAction;
+
+    void createActions();
+    void createTrayIcon();
 };
 
 #endif // MAINWINDOW_H
