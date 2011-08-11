@@ -52,7 +52,7 @@ private:
 
     void UnActiveTabs();
     void ActiveTab(QPushButton *button);
-
+    bool isGameExists();
     //tray items
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;

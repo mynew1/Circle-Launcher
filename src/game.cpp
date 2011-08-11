@@ -101,3 +101,8 @@ void Game::StartGame()
     NixStart();
 #endif
 }
+
+bool Game::gameExists(QString _gamePath)
+{
+    return QFile::exists(_gamePath + "/Wow.exe");
+}

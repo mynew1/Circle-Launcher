@@ -24,6 +24,7 @@ public:
     void ClearWtf();
     void StartGame();
     void ChangeRealmList(QString _realmList);
+    static bool gameExists(QString _gamePath);
 private:
     bool removeDir(const QString &dirName);
     void WinStart();

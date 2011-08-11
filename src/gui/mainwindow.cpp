@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QLineEdit>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -127,6 +128,9 @@ void MainWindow::UpdateRealms()
 
 void MainWindow::on_playButton_clicked()
 {
+    if (!isGameExists())
+        return;
+
     game.setGamePath(settings->getGamePath());
     game.setClearCacheBefore(settings->getIsCleanCache());
     game.setClearWtfBefore(settings->getIsCleanWtf());
@@ -143,6 +147,9 @@ void MainWindow::on_playButton_clicked()
 
 void MainWindow::on_cleanButton_clicked()
 {
+    if (!isGameExists())
+        return;
+
     game.setGamePath(settings->getGamePath());
     game.ClearCache();
 }
@@ -197,4 +204,18 @@ void MainWindow::closeEvent(QCloseEvent *event)
         hide();
         event->ignore();
     }
+}
+
+bool MainWindow::isGameExists()
+{
+    if (!Game::gameExists(settings->getGamePath()))
+    {
+        showNormal();
+        QMessageBox::information(this,"Game not found",
+                                 QString("Can't find game. "
+                                         "Current game folder:\n \"%1\".\n"
+                                         "Try to edit your settings.").arg(settings->getGamePath()));
+        return false;
+    }
+    return true;
 }
