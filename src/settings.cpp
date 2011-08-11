@@ -26,6 +26,8 @@ Settings::Settings() : settings("walkline", "CircleLauncher")
     isCleanCache = false;
     isCleanWtf   = false;
 
+    lastServerUpdate = QDateTime::currentDateTime().toString("dd.MM.yy hh:mm");
+
     defaultOnlineShown = 0;
     for(int i = 0; i < MAX_REALMS_ONLINE_COUNT; ++i)
         maxRealmsOnline[i] = 0;
@@ -66,6 +68,8 @@ void Settings::LoadSettings()
 
     isCleanCache = settings.value("isCleanCache").toBool();
     isCleanWtf = settings.value("isCleanWtf").toBool();
+
+    lastServerUpdate = settings.value("lastServerUpdate").toString();
 
     defaultOnlineShown = settings.value("defaultOnlineShown").toInt();
 
@@ -109,6 +113,8 @@ void Settings::SaveSettings()
     settings.setValue("isCleanCache", isCleanCache);
     settings.setValue("isCleanWtf", isCleanWtf);
 
+    settings.setValue("lastServerUpdate",lastServerUpdate);
+
     settings.setValue("defaultOnlineShown", defaultOnlineShown);
 
     settings.beginWriteArray("MaxRealmsOnline");
@@ -123,4 +129,14 @@ void Settings::SaveSettings()
     settings.setValue("forumView3", forumView3);
 
     settings.setValue("updateTime", updateTime);
+}
+
+void Settings::setLastServerUpdate(QDateTime _time)
+{
+    lastServerUpdate = _time.toString("dd.MM.yy hh:mm");
+}
+
+QDateTime Settings::getLastServerUpdate()
+{
+    return QDateTime::fromString(lastServerUpdate, "dd.MM.yy hh:mm");
 }

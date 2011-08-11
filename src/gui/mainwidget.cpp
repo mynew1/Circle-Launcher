@@ -40,6 +40,8 @@ MainWidget::MainWidget(Settings *_settings, QWidget *parent) :
 
     updateTimer.start(settings->getUpdateTime());
     characters = new Characters(settings->getGamePath());
+
+    newUpdate = false;
  }
 
 MainWidget::~MainWidget()
@@ -56,6 +58,12 @@ void MainWidget::Update1Forum()
 void MainWidget::Update2Forum()
 {
     pageData[1] = page2.getHtmlData();
+    if (settings->getLastServerUpdate() != page2.getLastPostDate() || settings->getLastServerUpdate().date() == QDate::currentDate())
+    {
+        settings->setLastServerUpdate(page2.getLastPostDate());
+        newUpdate = true;
+    }
+    qDebug() << settings->getLastServerUpdate();
 }
 
 void MainWidget::Update3Forum()

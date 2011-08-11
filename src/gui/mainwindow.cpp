@@ -140,6 +140,9 @@ void MainWindow::on_playButton_clicked()
     QString realmList = settings->getRealms().at(ui->realmCombo->currentIndex()).realmUrl;
     game.setRealmList(realmList);
 
+    if (mw->isNewUpdate())
+        on_cleanButton_clicked();
+
     game.StartGame();
     if (settings->getExitAfterStart())
         qApp->exit();

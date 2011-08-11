@@ -18,6 +18,7 @@ void ForumMgr::startThreadLoad()
     thread.setPage(forum.getLastThread().threadUrl);
 }
 
+
 void ForumMgr::DataToHtml()
 {
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
@@ -38,4 +39,9 @@ void ForumMgr::DataToHtml()
 void ForumMgr::Update()
 {
     setForumPage(forumPage);
+}
+
+QDateTime ForumMgr::getLastPostDate()
+{
+    return forum.getLastThread().lastPostDate;
 }

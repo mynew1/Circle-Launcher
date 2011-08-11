@@ -21,6 +21,7 @@ class MainWidget : public QWidget
 public:
     explicit MainWidget(Settings *_settings, QWidget *parent = 0);
     ~MainWidget();
+    bool isNewUpdate() { return newUpdate; }
 
 private:
     Ui::MainWidget *ui;
@@ -43,6 +44,8 @@ private:
 
     void setRealmOnline(bool online);
     void setCharClass(QString _class);
+
+    bool newUpdate;
 
 private slots:
     void UpdateAll();

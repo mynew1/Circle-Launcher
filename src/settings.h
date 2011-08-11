@@ -4,6 +4,7 @@
 #include <QSettings>
 #include <QDebug>
 #include <QFile>
+#include <QDateTime>
 
 #define MAX_REALMS_ONLINE_COUNT 25
 
@@ -35,6 +36,7 @@ public:
     bool           IsFirstUse()  { return isFirstUse;        }
     bool    getExitAfterStart()  { return exitAfterStart;    }
     int getMaxOnlineByIndex(int index)  { return maxRealmsOnline[index]; }
+    QDateTime getLastServerUpdate();
 
     void setGamePath(QString path)        { gamePath = path; }
     void setDefaultRealmIndex(int index)  { defaultRealmIndex = index; }
@@ -48,6 +50,7 @@ public:
     void setUpdateTime(int msec)          { updateTime = msec; }
     void setExitAfterStart(bool exit)     { exitAfterStart = exit; }
     void setMaxOnlineByIndex(int index, int value) { maxRealmsOnline[index] = value; }
+    void setLastServerUpdate(QDateTime _time);
 
     void addRealm(Realm realm)            { realms.append(realm); }
     void removeRealm(int index)           { realms.removeAt(index); }
@@ -67,6 +70,8 @@ private:
     //clean everytime before start
     bool isCleanCache;
     bool isCleanWtf;
+
+    QString lastServerUpdate;
 
     int defaultOnlineShown; //default realm which show online
     int maxRealmsOnline[MAX_REALMS_ONLINE_COUNT];

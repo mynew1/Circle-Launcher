@@ -19,6 +19,7 @@ public:
     explicit ForumMgr(QObject *parent = 0);
 
     void setForumPage(QUrl url);
+    QDateTime getLastPostDate();
     QString getHtmlData() { return htmlData; }
 
 signals:
