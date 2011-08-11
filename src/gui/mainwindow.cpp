@@ -136,3 +136,9 @@ void MainWindow::on_playButton_clicked()
     if (settings->getExitAfterStart())
         this->close();
 }
+
+void MainWindow::on_cleanButton_clicked()
+{
+    game.setGamePath(settings->getGamePath());
+    game.ClearCache();
+}

@@ -161,7 +161,7 @@ QPushButton:hover{
     <widget class="Line" name="line">
      <property name="geometry">
       <rect>
-       <x>338</x>
+       <x>309</x>
        <y>0</y>
        <width>3</width>
        <height>61</height>
@@ -177,7 +177,7 @@ QPushButton:hover{
     <widget class="QComboBox" name="realmCombo">
      <property name="geometry">
       <rect>
-       <x>254</x>
+       <x>228</x>
        <y>0</y>
        <width>81</width>
        <height>30</height>
@@ -235,6 +235,31 @@ QPushButton:hover{
       <string>arena</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="cleanButton">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>0</y>
+       <width>30</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {	
+	
+	background-image: url(:/img/clean16x16.png);
+	background-color: transparent;
+	border: none;
+}
+
+QPushButton:hover{
+	background-color: rgb(76, 76, 76);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="mainWidget" native="true">
     <property name="geometry">
@@ -259,7 +284,7 @@ background-color: #1a0f08;
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

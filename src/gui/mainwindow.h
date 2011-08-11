@@ -35,6 +35,8 @@ private slots:
 
     void on_playButton_clicked();
 
+    void on_cleanButton_clicked();
+
 private:
     void Init();
     Ui::MainWindow *ui;
