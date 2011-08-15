@@ -176,7 +176,7 @@ void MainWindow::createTrayIcon()
     trayIconMenu->addAction(quitAction);
 
     trayIcon = new QSystemTrayIcon(this);
-    trayIcon->setIcon(QIcon(":/img/logo.ico"));
+    trayIcon->setIcon(QIcon(":/img/logo.png"));
     trayIcon->show();
     trayIcon->setContextMenu(trayIconMenu);
     connect(trayIcon, SIGNAL(messageClicked()), this, SLOT(showMaximized()));

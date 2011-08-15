@@ -29,5 +29,6 @@
         <file>img/class/Warlock.png</file>
         <file>img/class/Warrior.png</file>
         <file>img/clean16x16.png</file>
+        <file>img/logo.png</file>
     </qresource>
 </RCC>
