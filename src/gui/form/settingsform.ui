@@ -50,11 +50,11 @@ font: 9pt &quot;Arial&quot;;
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="global">
     <attribute name="title">
-     <string>Global</string>
+     <string>Общие</string>
     </attribute>
     <widget class="QLabel" name="label">
      <property name="geometry">
@@ -82,14 +82,14 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QPushButton" name="browseButton">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>314</x>
        <y>3</y>
-       <width>61</width>
+       <width>68</width>
        <height>27</height>
       </rect>
      </property>
      <property name="text">
-      <string>Browse..</string>
+      <string>Выбрать...</string>
      </property>
     </widget>
     <widget class="QCheckBox" name="cacheCheck">
@@ -232,7 +232,7 @@ font: 9pt &quot;Arial&quot;;
    </widget>
    <widget class="QWidget" name="realms">
     <attribute name="title">
-     <string>Realms</string>
+     <string>Миры</string>
     </attribute>
     <widget class="QComboBox" name="realmsCombo">
      <property name="geometry">
@@ -254,7 +254,7 @@ font: 9pt &quot;Arial&quot;;
       </rect>
      </property>
      <property name="text">
-      <string>Delete</string>
+      <string>Удалить</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="realmName">
@@ -282,12 +282,12 @@ font: 9pt &quot;Arial&quot;;
       <rect>
        <x>320</x>
        <y>120</y>
-       <width>61</width>
+       <width>63</width>
        <height>27</height>
       </rect>
      </property>
      <property name="text">
-      <string>Add</string>
+      <string>Добавить</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_6">

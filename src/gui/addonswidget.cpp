@@ -44,7 +44,7 @@ void AddonsWidget::on_searchButton_clicked()
 {
     if (ui->searchEdit->text().count() < 3)
     {
-        QMessageBox::information(this,"Small index term","Need at least 3 characters.");
+        QMessageBox::information(this,tr("Короткое ключ. слово"),tr("Нужно минимум 3 символа."));
         return;
     }
 
@@ -62,8 +62,8 @@ void AddonsWidget::UpdateAddonSrchInfo()
 
     if (addonsCount <= 0)
     {
-        QMessageBox::information(this,"Not found","Sorry, we were unable to find any\n"
-                                                  "results using your search terms.");
+        QMessageBox::information(this,tr("Не найдено"),tr("Поиск не дал результатов,\n"
+                                                  "попробуйте изменить ключ. слово."));
         return;
     }
 
@@ -101,7 +101,7 @@ void AddonsWidget::on_updateButton_clicked()
 {
     if (currentSrchInfo == -1)
     {
-        QMessageBox::information(this,"Addon not select","You must select addon and then use update button.");
+        QMessageBox::information(this,tr("Выберите аддон"),tr("Выберите аддон и затем используйте данную кнопку."));
         return;
     }
 

@@ -107,10 +107,10 @@ QPushButton#searchButton:pressed{
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>80</y>
-      <width>41</width>
-      <height>17</height>
+      <width>51</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -118,7 +118,7 @@ QPushButton#searchButton:pressed{
 font: 8pt ;</string>
     </property>
     <property name="text">
-     <string>Results:</string>
+     <string>Найдено:</string>
     </property>
    </widget>
    <widget class="QLabel" name="resultCountLabel">
@@ -181,17 +181,17 @@ font: 8pt ;</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>24</x>
+      <x>14</x>
       <y>84</y>
-      <width>41</width>
-      <height>17</height>
+      <width>51</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>Queue:</string>
+     <string>Очередь:</string>
     </property>
    </widget>
    <widget class="QLabel" name="inQueueLabel">
@@ -210,9 +210,9 @@ font: 8pt ;</string>
    <widget class="QPushButton" name="installButton">
     <property name="geometry">
      <rect>
-      <x>176</x>
+      <x>166</x>
       <y>10</y>
-      <width>61</width>
+      <width>71</width>
       <height>21</height>
      </rect>
     </property>
@@ -240,7 +240,7 @@ QPushButton#installButton:pressed{
 }</string>
     </property>
     <property name="text">
-     <string>Install</string>
+     <string>Установить</string>
     </property>
    </widget>
   </widget>
@@ -322,7 +322,7 @@ color: rgb(0, 0, 0);
 }</string>
     </property>
     <property name="text">
-     <string>Addon name</string>
+     <string>Имя аддона</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -336,21 +336,21 @@ color: rgb(0, 0, 0);
      <rect>
       <x>20</x>
       <y>50</y>
-      <width>51</width>
+      <width>61</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
-     <string>Category:</string>
+     <string>Категории:</string>
     </property>
    </widget>
    <widget class="QLabel" name="categoryLabel">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>80</x>
       <y>50</y>
-      <width>331</width>
-      <height>17</height>
+      <width>321</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
@@ -362,18 +362,18 @@ color: rgb(0, 0, 0);
      <rect>
       <x>20</x>
       <y>30</y>
-      <width>21</width>
+      <width>71</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
-     <string>Hits:</string>
+     <string>Просмотров:</string>
     </property>
    </widget>
    <widget class="QLabel" name="hitsLabel">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>90</x>
       <y>30</y>
       <width>41</width>
       <height>17</height>
@@ -386,20 +386,20 @@ color: rgb(0, 0, 0);
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>174</x>
       <y>30</y>
-      <width>41</width>
-      <height>17</height>
+      <width>45</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Rating:</string>
+     <string>Рейтинг:</string>
     </property>
    </widget>
    <widget class="QLabel" name="ratingLabel">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>220</x>
       <y>30</y>
       <width>41</width>
       <height>17</height>
@@ -620,7 +620,7 @@ QPushButton:hover{
       </rect>
      </property>
      <property name="text">
-      <string>Downloads:</string>
+      <string>Загрузок:</string>
      </property>
     </widget>
    </widget>

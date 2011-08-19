@@ -214,10 +214,10 @@ bool MainWindow::isGameExists()
     if (!Game::gameExists(settings->getGamePath()))
     {
         showNormal();
-        QMessageBox::information(this,"Game not found",
-                                 QString("Can't find game. "
-                                         "Current game folder:\n \"%1\".\n"
-                                         "Try to edit your settings.").arg(settings->getGamePath()));
+        QMessageBox::warning(this,"",
+                                 QString(tr("Игра не найдена. "
+                                         "Текущий каталог:\n \"%1\".\n"
+                                         "Отредактируйте ваши настройки.")).arg(settings->getGamePath()));
         return false;
     }
     return true;
