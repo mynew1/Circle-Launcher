@@ -89,6 +89,7 @@ void AddonsWidget::on_tableWidget_cellClicked(int row, int /*column*/)
     if (currentSrchInfo == row)
         return;
 
+    ui->tableWidget->selectRow(row);
     ui->nameLabel->setText(QString("<style>a { color: black; } a:visited { color: red; }</style><a href=\"%1\">%2</a>").arg(addonsSrchInfo[row].page.toString()).arg(addonsSrchInfo[row].name));
     ui->categoryLabel->setText(addonsSrchInfo[row].category.join(", "));
     ui->hitsLabel->setText(QString::number(addonsSrchInfo[row].hits));
