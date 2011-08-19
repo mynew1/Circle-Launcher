@@ -85,16 +85,6 @@ void MainWindow::on_toolButton_clicked()
 
 void MainWindow::Init()
 {
-
-    QString style = "QLineEdit:hover {"
-                        "background-color: transparent;"
-                    "}";
-
-    ui->realmCombo->setEditable(true);
-    ui->realmCombo->lineEdit()->setStyleSheet(style);
-    ui->realmCombo->lineEdit()->setReadOnly(true);
-    ui->realmCombo->lineEdit()->setAlignment(Qt::AlignRight);
-
     for(int i = 0; i < ui->realmCombo->count(); i++)
         ui->realmCombo->setItemData(i, Qt::AlignRight, Qt::TextAlignmentRole);
 
