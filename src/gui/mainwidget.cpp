@@ -63,7 +63,6 @@ void MainWidget::Update2Forum()
         settings->setLastServerUpdate(page2.getLastPostDate());
         newUpdate = true;
     }
-    qDebug() << settings->getLastServerUpdate();
 }
 
 void MainWidget::Update3Forum()

@@ -76,13 +76,14 @@ void Game::ChangeRealmList(QString _realmList)
 void Game::NixStart()
 {
     if (QFile::exists(gamePath + "/Wow.exe"))
-        QProcess::startDetached("wine", QStringList(gamePath + "/wow.exe"));
+        QProcess::startDetached("wine", QStringList(gamePath + "/Wow.exe"));
 }
 
 void Game::WinStart()
 {
-    if (QFile::exists(gamePath + "/Wow.exe"))
-        QProcess::startDetached(gamePath + "/Wow.exe");
+    QFileInfo file(gamePath+"/Wow.exe");
+    if (QFile::exists(file.absoluteFilePath()))
+        QProcess::startDetached("\"" + file.absoluteFilePath() + "\"");
 }
 
 void Game::StartGame()
