@@ -42,6 +42,8 @@ MainWidget::MainWidget(Settings *_settings, QWidget *parent) :
     characters = new Characters(settings->getGamePath());
 
     newUpdate = false;
+
+    ui->synchButton->setVisible(false);
  }
 
 MainWidget::~MainWidget()

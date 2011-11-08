@@ -22,6 +22,7 @@ MainWindow::MainWindow(Settings *_settings, QWidget *parent):
     setSettings(_settings);
     createActions();
     createTrayIcon();
+    ui->arenaButton->setVisible(false);
 }
 
 MainWindow::~MainWindow()
