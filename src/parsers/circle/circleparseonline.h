@@ -22,7 +22,7 @@ private:
 public:
     explicit CircleParseOnline(QObject *parent = 0);
 
-    void startParse(QUrl url = QUrl("http://wowcircle.com/online.htm"));
+    void startParse(QUrl url = QUrl("http://wowcircle.com/main/stat.html"));
 
     int getRealmsCount()        { return realmsCount; }
     RealmInfo* getRealmsInfo()  { return realms;      }

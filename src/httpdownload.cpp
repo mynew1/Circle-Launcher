@@ -78,7 +78,7 @@ QString HttpDownload::getDownloadStrData()
 {
     if(!processDone)
         return "\0";
-    if (url.toString() == "http://wowcircle.com/online.htm")
+    if (url.toString() == "http://wowcircle.com/main/stat.html")
     {
         QTextCodec::setCodecForLocale(QTextCodec::codecForLocale());
         QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
