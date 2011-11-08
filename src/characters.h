@@ -22,9 +22,25 @@ enum CharRaceEnum {
     RACE_DRAENEI
 };
 
+enum CharClassEnum {
+    CLASS_UNK_0,
+    CLASS_WARRIOR,
+    CLASS_PALADIN,
+    CLASS_HUNTER,
+    CLASS_ROGUE,
+    CLASS_PRIEST,
+    CLASS_DEATH_KNIGHT,
+    CLASS_SHAMAN,
+    CLASS_MAGE,
+    CLASS_WARLOCK,
+    CLASS_UNK_1,
+    CLASS_DRUID
+};
+
 struct Character {
     QString name;
-    QString charClass;
+    QString charClassStr;
+    CharClassEnum charClass;
     CharRaceEnum race;
     bool isMale;
     int level;
@@ -57,6 +73,7 @@ private:
     QString getRealClassName(QString str);
     CharRaceEnum getRealRace(QString str);
     bool    isMaleStrToBool(QString str);
+    CharClassEnum getClassFromStr(QString str);
 
     Character createUnknownChar();
 };

@@ -43,7 +43,7 @@ void Characters::processFile(QFile *file)
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 
     QStringList names;
-    QList< QPair<QString, QString> > charClass;
+    QList< QPair<QString, QString> > charClassStr;
     QList< QPair<QString, QString> > race;
     QList< QPair<QString, QString> > isMale;
     QList< QPair<QString, QString> > level;
@@ -60,7 +60,7 @@ void Characters::processFile(QFile *file)
         if (line.contains("-name"))
             names << tmp.first;
         else if (line.contains("-class"))
-            charClass.append(tmp);
+            charClassStr.append(tmp);
         else if (line.contains("-race"))
             race.append(tmp);
         else if (line.contains("-sex"))
@@ -77,8 +77,11 @@ void Characters::processFile(QFile *file)
         _char.name = names.at(i);
         for (int j = 0; j < names.size(); ++j)
         {
-            if (names.at(i) == charClass.at(j).first)
-                _char.charClass = getRealClassName(charClass.at(j).second);
+            if (names.at(i) == charClassStr.at(j).first)
+            {
+                _char.charClassStr = getRealClassName(charClassStr.at(j).second);
+                _char.charClass = getClassFromStr(_char.charClassStr);
+            }
             if (names.at(i) == race.at(j).first)
                 _char.race = getRealRace(race.at(j).second);
             if (names.at(i) == isMale.at(j).first)
@@ -142,6 +145,31 @@ QString Characters::getRealClassName(QString str)
         return str;
 }
 
+CharClassEnum Characters::getClassFromStr(QString str)
+{
+    if (str == "DeathKnight")
+        return CLASS_DEATH_KNIGHT;
+    if (str == "Druid")
+        return CLASS_DRUID;
+    if (str == "Warrior")
+        return CLASS_WARRIOR;
+    if (str == "Priest")
+        return CLASS_PRIEST;
+    if (str == "Mage")
+        return CLASS_MAGE;
+    if (str == "Hunter")
+        return CLASS_HUNTER;
+    if (str == "Paladin")
+        return CLASS_PALADIN;
+    if (str == "Rogue")
+        return CLASS_ROGUE;
+    if (str == "Warlock")
+        return CLASS_WARLOCK;
+    if (str == "Shaman")
+        return CLASS_SHAMAN;
+    return CLASS_UNK_0;
+}
+
 CharRaceEnum Characters::getRealRace(QString str)
 {
     if (str == QObject::tr("Эльф крови") || str == QObject::tr("Эльфийка крови") || str == "Blood Elf")
@@ -181,7 +209,8 @@ Character Characters::createUnknownChar()
 {
     Character tmp;
     tmp.name = "unknown";
-    tmp.charClass = "Warrior";
+    tmp.charClassStr = "Warrior";
+    tmp.charClass = CLASS_UNK_0;
     tmp.race = RACE_UNKNOWN;
     tmp.isMale = false;
     tmp.level = 42;

@@ -255,7 +255,7 @@ void MainWidget::UpdateCharacters(int index, QString realm)
 
     QString name = characters->getCharacterByIndex(index).name;
     QString level = QString::number(characters->getCharacterByIndex(index).level);
-    QString charClass = characters->getCharacterByIndex(index).charClass;
+    QString charClass = characters->getCharacterByIndex(index).charClassStr;
     ui->charNameLabel->setText(name);
     ui->levelLabel->setText(level);
     setCharClass(charClass);
