@@ -33,7 +33,7 @@ Settings::Settings() : settings("walkline", "CircleLauncher")
         maxRealmsOnline[i] = 0;
 
     forumView1 = "http://forum.wowcircle.com/forumdisplay.php?f=2";
-    forumView2 = "http://forum.wowcircle.com/forumdisplay.php?f=120";
+    forumView2 = "http://forum.wowcircle.com/forumdisplay.php?f=320";
     forumView3 = "http://forum.wowcircle.com/forumdisplay.php?f=3";
 
     updateTime = 300000; // 5 minutes
