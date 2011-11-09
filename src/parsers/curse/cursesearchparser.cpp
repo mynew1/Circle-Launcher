@@ -43,7 +43,7 @@ CurseSearchParser::~CurseSearchParser()
 QUrl CurseSearchParser::GenerateUrl(QString indexTerm)
 {
     QString tmp = indexTerm;
-    return QUrl("http://wow.curse.com/downloads/wow-addons/SearchResults.aspx?q="+tmp.replace(" ","%20"));
+    return QUrl("http://www.curse.com/search?type=addons&game-slug=wow&search="+tmp.replace(" ","%20"));
 }
 
 void CurseSearchParser::setIndexTerm(QString indexTerm)
@@ -94,8 +94,10 @@ void CurseSearchParser::Parse()
 
 int CurseSearchParser::GetPageCount()
 {
-    parser->SearchSegments("<li class=\"total\">", " page(s)</li>");
-    return parser->GetSegment().toInt();
+    if (parser->SearchSegments("<span class=\"pager-display\">Page 1 of ", "</span>"))
+        return parser->GetSegment().toInt();
+    else
+        return 1;
 }
 
 void CurseSearchParser::ParseAddonsName(Parser *p)
@@ -156,7 +158,7 @@ void CurseSearchParser::ParseAddonsRating(Parser *p)
 
 bool CurseSearchParser::isNotFound()
 {
-    return parser->SearchSegments("<div class=\"CommonMessageError\">", "</div>");
+    return parser->SearchSegments("Sorry, an error occurred while processing ", "your request.");
 }
 
 void CurseSearchParser::CollectData(Parser *p)

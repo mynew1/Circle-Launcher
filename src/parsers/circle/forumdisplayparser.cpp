@@ -53,11 +53,11 @@ void ForumDisplayParser::ParseUrl()
 
 void ForumDisplayParser::ParseAuthors()
 {
-    if (parser.SearchSegments("<span style=\"cursor:pointer\"", "</span>"))
+    if (parser.SearchSegments("<div class=\"smallfont\">", "</div>"))
     {
         int i = 0;
         do {
-            threads[i].author = Parser::SrchSegInString(parser.GetSegment(), "'_self')\">");
+            threads[i].author = Parser::SrchSegInString(parser.GetSegment(), "'_self')\">","</span>");
             ++i;
         } while (parser.NextSegment());
     }
