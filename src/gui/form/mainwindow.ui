@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Circle Launcher 2.1</string>
+   <string>Circle Launcher 2.2</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../../../rc.qrc">
