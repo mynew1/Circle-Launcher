@@ -121,7 +121,7 @@ QString Characters::getCharacterName(QString str)
 
 QString Characters::getRealClassName(QString str)
 {
-    if (str == QObject::tr("� ыцарь смерти") || str.contains("Death"))
+    if (str == QObject::tr("Рыцарь смерти") || str.contains("Death"))
         return "DeathKnight";
     if (str == QObject::tr("Друид"))
         return "Druid";
@@ -135,7 +135,7 @@ QString Characters::getRealClassName(QString str)
         return "Hunter";
     if (str == QObject::tr("Паладин"))
         return "Paladin";
-    if (str == QObject::tr("� азбойник") || str == QObject::tr("� азбойница"))
+    if (str == QObject::tr("Разбойник") || str == QObject::tr("Разбойница"))
         return "Rogue";
     if (str == QObject::tr("Чернокнижник") || str == QObject::tr("Чернокнижница"))
         return "Warlock";
@@ -197,7 +197,6 @@ CharRaceEnum Characters::getRealRace(QString str)
 
     return RACE_UNKNOWN;
 }
-
 bool Characters::isMaleStrToBool(QString str)
 {
     if (str.toInt() == 2)
