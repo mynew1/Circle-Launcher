@@ -54,6 +54,8 @@ private slots:
 
     void on_realmsTable_cellChanged(int row, int column);
 
+    void on_clearOnlineButton_clicked();
+
 private:
     Ui::SettingsForm *ui;
     Settings *settings;
@@ -63,6 +65,8 @@ private:
     void LoadSettings();
     void SaveSettings();
     void UpdateRealms();
+    void ActivateButton(QPushButton *button, QString img);
+    void UnActivateButtons();
 };
 
 #endif // SETTINGSFORM_H

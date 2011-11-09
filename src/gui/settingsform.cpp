@@ -122,16 +122,19 @@ void SettingsForm::on_addButton_clicked()
 
 void SettingsForm::on_generalButton_clicked()
 {
+    ActivateButton(ui->generalButton, "medal.png");
     ui->tabWidget->setCurrentIndex(0);
 }
 
 void SettingsForm::on_guiButton_clicked()
 {
+    ActivateButton(ui->guiButton, "photo.png");
     ui->tabWidget->setCurrentIndex(1);
 }
 
 void SettingsForm::on_realmsButton_clicked()
 {
+    ActivateButton(ui->realmsButton, "globe.png");
     ui->tabWidget->setCurrentIndex(2);
 }
 
@@ -190,4 +193,28 @@ void SettingsForm::on_realmsTable_cellChanged(int row, int column)
     settings->SaveSettings();
     UpdateRealms();
     emit RealmsChanged();
+}
+
+void SettingsForm::UnActivateButtons()
+{
+    ui->generalButton->setStyleSheet("image: url(:/img/medal.png);");
+    ui->guiButton->setStyleSheet("image: url(:/img/photo.png);");
+    ui->realmsButton->setStyleSheet("image: url(:/img/globe.png);");
+}
+
+void SettingsForm::ActivateButton(QPushButton *button, QString img)
+{
+    UnActivateButtons();
+
+    QString style = QString("font-weight: bold;"
+                            "image: url(:/img/%1);"
+                            "border-left: 3px solid rgb(221,75,57);").arg(img);
+    button->setStyleSheet(style);
+}
+
+void SettingsForm::on_clearOnlineButton_clicked()
+{
+    for (int i = 0; i < MAX_REALMS_ONLINE_COUNT; i++)
+        settings->setMaxOnlineByIndex(i, 0);
+    settings->SaveSettings();
 }
