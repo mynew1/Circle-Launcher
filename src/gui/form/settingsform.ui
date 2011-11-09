@@ -1,53 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>SettingsForm</class>
- <widget class="QDialog" name="SettingsForm">
+ <widget class="QWidget" name="SettingsForm">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>400</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>400</width>
-    <height>300</height>
+    <height>400</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Launcher Settings</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-font: 9pt &quot;Arial&quot;;
-</string>
+   <string notr="true"/>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>260</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>400</width>
-     <height>241</height>
+     <x>70</x>
+     <y>-30</y>
+     <width>331</width>
+     <height>431</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTabWidget {
+    border:none;
+}</string>
    </property>
    <property name="currentIndex">
     <number>0</number>
@@ -59,8 +46,8 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>10</y>
+       <x>10</x>
+       <y>24</y>
        <width>91</width>
        <height>17</height>
       </rect>
@@ -72,9 +59,9 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QLineEdit" name="gamePath">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>3</y>
-       <width>181</width>
+       <x>100</x>
+       <y>20</y>
+       <width>141</width>
        <height>27</height>
       </rect>
      </property>
@@ -82,9 +69,9 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QPushButton" name="browseButton">
      <property name="geometry">
       <rect>
-       <x>314</x>
-       <y>3</y>
-       <width>68</width>
+       <x>250</x>
+       <y>20</y>
+       <width>79</width>
        <height>27</height>
       </rect>
      </property>
@@ -95,9 +82,9 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QCheckBox" name="cacheCheck">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>40</y>
-       <width>171</width>
+       <x>60</x>
+       <y>90</y>
+       <width>231</width>
        <height>22</height>
       </rect>
      </property>
@@ -108,9 +95,9 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QCheckBox" name="wtfCheck">
      <property name="geometry">
       <rect>
-       <x>210</x>
-       <y>40</y>
-       <width>171</width>
+       <x>60</x>
+       <y>70</y>
+       <width>221</width>
        <height>22</height>
       </rect>
      </property>
@@ -121,9 +108,9 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>174</y>
-       <width>161</width>
+       <x>10</x>
+       <y>350</y>
+       <width>191</width>
        <height>17</height>
       </rect>
      </property>
@@ -134,10 +121,10 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QSpinBox" name="updateTime">
      <property name="geometry">
       <rect>
-       <x>230</x>
-       <y>170</y>
+       <x>220</x>
+       <y>345</y>
        <width>91</width>
-       <height>27</height>
+       <height>25</height>
       </rect>
      </property>
      <property name="maximum">
@@ -151,8 +138,8 @@ font: 9pt &quot;Arial&quot;;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>100</y>
-       <width>111</width>
+       <y>190</y>
+       <width>131</width>
        <height>20</height>
       </rect>
      </property>
@@ -164,8 +151,8 @@ font: 9pt &quot;Arial&quot;;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>120</y>
-       <width>111</width>
+       <y>210</y>
+       <width>131</width>
        <height>20</height>
       </rect>
      </property>
@@ -177,8 +164,8 @@ font: 9pt &quot;Arial&quot;;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>140</y>
-       <width>111</width>
+       <y>230</y>
+       <width>131</width>
        <height>20</height>
       </rect>
      </property>
@@ -189,9 +176,9 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QLineEdit" name="forum1">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>100</y>
-       <width>241</width>
+       <x>140</x>
+       <y>190</y>
+       <width>181</width>
        <height>20</height>
       </rect>
      </property>
@@ -199,9 +186,9 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QLineEdit" name="forum2">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>120</y>
-       <width>241</width>
+       <x>140</x>
+       <y>210</y>
+       <width>181</width>
        <height>20</height>
       </rect>
      </property>
@@ -209,19 +196,40 @@ font: 9pt &quot;Arial&quot;;
     <widget class="QLineEdit" name="forum3">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>140</y>
-       <width>241</width>
+       <x>140</x>
+       <y>230</y>
+       <width>181</width>
        <height>20</height>
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>160</y>
+       <width>271</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Отображаемые розделы форума</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Интерфейс</string>
+    </attribute>
     <widget class="QCheckBox" name="exitCheck">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>70</y>
-       <width>201</width>
+       <x>40</x>
+       <y>20</y>
+       <width>241</width>
        <height>22</height>
       </rect>
      </property>
@@ -234,21 +242,11 @@ font: 9pt &quot;Arial&quot;;
     <attribute name="title">
      <string>Миры</string>
     </attribute>
-    <widget class="QComboBox" name="realmsCombo">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>40</y>
-       <width>141</width>
-       <height>27</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QPushButton" name="deleteButton">
      <property name="geometry">
       <rect>
-       <x>230</x>
-       <y>40</y>
+       <x>240</x>
+       <y>360</y>
        <width>71</width>
        <height>27</height>
       </rect>
@@ -257,32 +255,12 @@ font: 9pt &quot;Arial&quot;;
       <string>Удалить</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="realmName">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>120</y>
-       <width>131</width>
-       <height>27</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="realmUrl">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>120</y>
-       <width>141</width>
-       <height>27</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QPushButton" name="addButton">
      <property name="geometry">
       <rect>
-       <x>320</x>
-       <y>120</y>
-       <width>63</width>
+       <x>20</x>
+       <y>360</y>
+       <width>81</width>
        <height>27</height>
       </rect>
      </property>
@@ -290,74 +268,108 @@ font: 9pt &quot;Arial&quot;;
       <string>Добавить</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_6">
+    <widget class="QTableWidget" name="realmsTable">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>100</y>
-       <width>94</width>
-       <height>17</height>
+       <x>10</x>
+       <y>10</y>
+       <width>311</width>
+       <height>341</height>
       </rect>
-     </property>
-     <property name="text">
-      <string>Название мира</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_7">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>100</y>
-       <width>81</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Адрес мира</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
   </widget>
+  <widget class="QWidget" name="leftWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>71</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget#leftWidget{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgb(19,19,19), stop:1 rgb(50,50,50));
+	border: 1px solid rgb(0,0,0);
+}
+
+QPushButton{
+	font: 8pt &quot;Arial&quot;;
+	color: white;
+	font-weight: bold;
+	border:none;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgb(19,19,19), stop:1 rgb(50,50,50));
+	border-bottom: 1px solid rgb(0,0,0);
+}
+
+QPushButton:hover {
+	 background-color: rgb(76, 76, 76);
+}</string>
+   </property>
+   <widget class="QPushButton" name="generalButton">
+    <property name="geometry">
+     <rect>
+      <x>1</x>
+      <y>0</y>
+      <width>69</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/img/medal.png);</string>
+    </property>
+    <property name="text">
+     <string>
+
+
+
+General</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="guiButton">
+    <property name="geometry">
+     <rect>
+      <x>1</x>
+      <y>71</y>
+      <width>69</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/img/photo.png);</string>
+    </property>
+    <property name="text">
+     <string>
+
+
+
+Interface</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="realmsButton">
+    <property name="geometry">
+     <rect>
+      <x>1</x>
+      <y>142</y>
+      <width>69</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/img/globe.png);</string>
+    </property>
+    <property name="text">
+     <string>
+
+
+
+Realms</string>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>SettingsForm</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>SettingsForm</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

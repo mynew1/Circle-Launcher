@@ -52,6 +52,7 @@ public:
     void setMaxOnlineByIndex(int index, int value) { maxRealmsOnline[index] = value; }
     void setLastServerUpdate(QDateTime _time);
 
+    void setRealmAt(Realm realm, int index) { realms.replace(index, realm); }
     void addRealm(Realm realm)            { realms.append(realm); }
     void removeRealm(int index)           { realms.removeAt(index); }
 private:

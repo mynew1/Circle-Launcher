@@ -23,6 +23,8 @@ MainWindow::MainWindow(Settings *_settings, QWidget *parent):
     createActions();
     createTrayIcon();
     ui->arenaButton->setVisible(false);
+    if (settings->IsFirstUse())
+        on_toolButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -40,23 +42,46 @@ void MainWindow::UnActiveTabs()
                     "QPushButton:hover{"
                             "background-color: rgb(76, 76, 76);"
                     "}";
+    QString toolStyle = "QPushButton {"
+                                "image: url(:/img/toolButton.png);"
+                                "background-color: transparent;"
+                                "border: none;"
+                        "}"
+
+                        "QPushButton:hover{"
+                                "background-color: rgb(76, 76, 76);"
+                        "}";
     ui->mainButton->setStyleSheet(style);
     ui->addonButton->setStyleSheet(style);
     ui->arenaButton->setStyleSheet(style);
+    ui->toolButton->setStyleSheet(toolStyle);
 }
 
-void MainWindow::ActiveTab(QPushButton *button)
+void MainWindow::ActiveTab(QPushButton *button , bool isToolButton)
 {
     UnActiveTabs();
-    QString style = "QPushButton {"
-                            "color: white;"
-                            "font-weight: bold;"
-                            "background-image: url(:/img/orange-header.png);"
-                            "border: none;"
-                    "}"
-                    "QPushButton:hover{"
-                            "background-color: rgb(76, 76, 76);"
-                    "}";
+
+    QString style = (!isToolButton) ?
+                                    "QPushButton {"
+                                            "color: white;"
+                                            "font-weight: bold;"
+                                            "background-image: url(:/img/orange-header.png);"
+                                            "border: none;"
+                                    "}"
+                                    "QPushButton:hover{"
+                                            "background-color: rgb(76, 76, 76);"
+                                    "}"
+                                    :
+                                    "QPushButton {"
+                                            "color: white;"
+                                            "font-weight: bold;"
+                                            "background-image: url(:/img/orange-header.png);"
+                                            "image: url(:/img/toolButton.png);"
+                                            "border: none;"
+                                    "}"
+                                    "QPushButton:hover{"
+                                            "background-color: rgb(76, 76, 76);"
+                                    "}";
     button->setStyleSheet(style);
 }
 
@@ -64,6 +89,7 @@ void MainWindow::on_mainButton_clicked()
 {
     ActiveTab(ui->mainButton);
     aw->hide();
+    sw->hide();
     mw->show();
 }
 
@@ -71,6 +97,7 @@ void MainWindow::on_addonButton_clicked()
 {
     ActiveTab(ui->addonButton);
     mw->hide();
+    sw->hide();
     aw->show();
 }
 
@@ -81,7 +108,10 @@ void MainWindow::on_arenaButton_clicked()
 
 void MainWindow::on_toolButton_clicked()
 {
-    settingsForm.show();
+    ActiveTab(ui->toolButton, true);
+    mw->hide();
+    aw->hide();
+    sw->show();
 }
 
 void MainWindow::Init()
@@ -92,7 +122,7 @@ void MainWindow::Init()
     aw = new AddonsWidget(settings, ui->mainWidget);
     mw = new MainWidget(settings, ui->mainWidget);
 
-    connect(&settingsForm, SIGNAL(RealmsChanged()), this, SLOT(UpdateRealms()));
+    connect(sw, SIGNAL(RealmsChanged()), this, SLOT(UpdateRealms()));
 
     UpdateRealms();
     on_mainButton_clicked();
@@ -101,7 +131,8 @@ void MainWindow::Init()
 void MainWindow::setSettings(Settings *_settings)
 {
     settings = _settings;
-    settingsForm.setSettings(_settings);
+    sw = new SettingsForm(ui->mainWidget);
+    sw->setSettings(_settings);
     Init();
 }
 
@@ -205,6 +236,7 @@ bool MainWindow::isGameExists()
     if (!Game::gameExists(settings->getGamePath()))
     {
         showNormal();
+        on_toolButton_clicked();
         QMessageBox::warning(this,"",
                                  QString(tr("Игра не найдена. "
                                          "Текущий каталог:\n \"%1\".\n"

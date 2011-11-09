@@ -46,12 +46,12 @@ private:
     Ui::MainWindow *ui;
     AddonsWidget   *aw;
     MainWidget     *mw;
-    SettingsForm    settingsForm;
+    SettingsForm   *sw;
     Settings       *settings;
     Game            game;
 
     void UnActiveTabs();
-    void ActiveTab(QPushButton *button);
+    void ActiveTab(QPushButton *button, bool isToolButton = false);
     bool isGameExists();
     //tray items
     QSystemTrayIcon *trayIcon;

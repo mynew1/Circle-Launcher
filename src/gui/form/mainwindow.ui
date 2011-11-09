@@ -127,7 +127,7 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {	
-	background-image: url(:/img/toolButton.png);
+	image: url(:/img/toolButton.png);
 	background-color: transparent;
 	border: none;
 }

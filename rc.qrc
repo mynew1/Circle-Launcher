@@ -154,5 +154,8 @@
         <file>img/portraits/1-11-7.gif</file>
         <file>img/portraits/1-11-8.gif</file>
         <file>img/portraits/0-0-0.gif</file>
+        <file>img/globe.png</file>
+        <file>img/medal.png</file>
+        <file>img/photo.png</file>
     </qresource>
 </RCC>
