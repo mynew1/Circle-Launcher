@@ -44,6 +44,7 @@ private:
 
     void setRealmOnline(bool online);
     void setCharClass(QString _class);
+    void SetCharacterPortrait(QString img);
 
     bool newUpdate;
 

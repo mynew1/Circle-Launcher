@@ -259,6 +259,20 @@ void MainWidget::UpdateCharacters(int index, QString realm)
     ui->charNameLabel->setText(name);
     ui->levelLabel->setText(level);
     setCharClass(charClass);
+    int sex = !characters->getCharacterByIndex(index).isMale;
+    CharClassEnum _class = characters->getCharacterByIndex(index).charClass;
+    CharRaceEnum _race = characters->getCharacterByIndex(index).race;
+    SetCharacterPortrait(QString("%1-%2-%3.gif").arg(QString::number(sex))
+                                                .arg(QString::number(_race))
+                                                .arg(QString::number(_class)));
+}
+
+void MainWidget::SetCharacterPortrait(QString img)
+{
+    QString style = QString("background-image: url(:/img/portraits/%1);"
+                            "border:1px solid;"
+                            "border-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0.00966184 #531108, stop:0.637681 #953203);").arg(img);
+    ui->portretWidget->setStyleSheet(style);
 }
 
 void MainWidget::on_nextCharButton_clicked()

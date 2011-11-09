@@ -121,7 +121,7 @@ QString Characters::getCharacterName(QString str)
 
 QString Characters::getRealClassName(QString str)
 {
-    if (str == QObject::tr("Рыцарь смерти") || str.contains("Death"))
+    if (str == QObject::tr("� ыцарь смерти") || str.contains("Death"))
         return "DeathKnight";
     if (str == QObject::tr("Друид"))
         return "Druid";
@@ -135,7 +135,7 @@ QString Characters::getRealClassName(QString str)
         return "Hunter";
     if (str == QObject::tr("Паладин"))
         return "Paladin";
-    if (str == QObject::tr("Разбойник") || str == QObject::tr("Разбойница"))
+    if (str == QObject::tr("� азбойник") || str == QObject::tr("� азбойница"))
         return "Rogue";
     if (str == QObject::tr("Чернокнижник") || str == QObject::tr("Чернокнижница"))
         return "Warlock";
@@ -212,7 +212,7 @@ Character Characters::createUnknownChar()
     tmp.charClassStr = "Warrior";
     tmp.charClass = CLASS_UNK_0;
     tmp.race = RACE_UNKNOWN;
-    tmp.isMale = false;
+    tmp.isMale = true;
     tmp.level = 42;
     tmp.lastIn = QDateTime();
     return tmp;
